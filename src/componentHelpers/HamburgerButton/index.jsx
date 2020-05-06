@@ -2,6 +2,7 @@ import React from 'react';
 import './HamburgerButton.scss';
 
 export default function HamburgerButton({className, height, width, isActive, clickHandler}) {
+
   return (
     <button onClick={clickHandler} className={`button-hamburger ${className} ${isActive ? 'active' : ''}`}>
       <svg className='button-hamburger-svg' style={{height, width}} viewBox="0 0 120 120">

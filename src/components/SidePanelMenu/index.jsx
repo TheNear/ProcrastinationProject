@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTasks, faClipboardList, faAward, faComments, faHome } from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from 'react-router-dom';
@@ -44,20 +44,34 @@ const navigation = [
 
 
 export default function SidePanelMenu() {
-  const [menuActive, toggleMenu] = useState('false');
+  const [menuActive, toggleMenu] = useState(false);
+
+  const toggleMenuHandler = () => {
+    toggleMenu(true);
+  }
+
+  useEffect(() => {
+    if (menuActive) {
+        window.addEventListener('mouseup', () => {
+          setTimeout(() => {
+            toggleMenu(false)
+          },0)
+        }, {once: true})
+    }
+  }, [menuActive])
 
   return (
     <Fragment>
       <HamburgerButton 
         isActive={menuActive}
-        clickHandler={() => toggleMenu(!menuActive)}
+        clickHandler={toggleMenuHandler}
         className='side-menu__hamburger'
         height='100px'
         width='100px'
       />
       <nav className={`side-menu ${menuActive ? 'active' : ''}`}>
         <ul className="side-menu__list">
-          {navigation.map((link, index) => (
+          {navigation.map((link) => (
             <li key={link.id + 'key'} className="side-menu__item">
               <div className="side-menu__icon"><FontAwesomeIcon icon={link.icon} /></div>
               <NavLink to={link.to} className="side-menu__link">{link.title}</NavLink>

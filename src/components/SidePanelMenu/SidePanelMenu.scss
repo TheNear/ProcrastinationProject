@@ -12,6 +12,8 @@
   align-items: center;
 }
 
+
+
 .side-menu__icon {
   width: 30px;
   height: 30px;
@@ -27,10 +29,13 @@
   padding-left: 10px;
   display: flex;
   align-items: center;
+  transition: color 0.3s ease-in;
 }
 
-.side-menu__toggler-label {
-  display: none;
+.side-menu__link.active {
+  color: white;
+
+
 }
 
 .side-menu__hamburger {

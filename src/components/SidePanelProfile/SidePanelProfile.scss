@@ -1,10 +1,22 @@
 .side-profile {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 15px;
 }
 
+.side-profile::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 200px;
+  height: 1px;
+  // background-color: $font-color;
+  // box
+  background-color: $font-color;
+  box-shadow: 0 0 9px 1px rgb(137, 156, 220)
+}
 
 .side-profile__photo {
   display: block;
@@ -39,6 +51,10 @@
   .side-profile__photo {
     width: auto;
     height: 100%;
+  }
+
+  .side-profile::after {
+    display: none;
   }
 
   .side-profile__info {

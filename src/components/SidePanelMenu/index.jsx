@@ -74,7 +74,7 @@ export default function SidePanelMenu() {
           {navigation.map((link) => (
             <li key={link.id + 'key'} className="side-menu__item">
               <div className="side-menu__icon"><FontAwesomeIcon icon={link.icon} /></div>
-              <NavLink to={link.to} className="side-menu__link">{link.title}</NavLink>
+              <NavLink exact to={link.to} className="side-menu__link">{link.title}</NavLink>
             </li>
           ))}
         </ul>

@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './App.scss'
+
+import MainPage from './pages/MainPage';
 
 export default function App() {
   return (
-    <div className='testdiv'>
-      PENIS
-    </div>
+    <Fragment>
+      <MainPage />
+    </Fragment>
   )
 };

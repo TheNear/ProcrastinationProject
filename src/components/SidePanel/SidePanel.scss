@@ -1,7 +1,18 @@
 .side-panel {
   width: 250px;
+  // max-height: 100px;
   display: flex;
   flex-direction: column;
   background-color: $item-color;
   @include box-shadow;
+  overflow: hidden;
 }
+
+
+@media only screen  and (max-width: $sc-big-medium) {
+  .side-panel {
+    flex-direction: row;
+    width: auto;
+    height: 100px;
+  }
+};

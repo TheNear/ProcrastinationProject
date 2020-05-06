@@ -1,10 +1,12 @@
 import React from 'react';
-import SideMenuProfile from '../SidePanelProfile';
+import SidePanelProfile from '../SidePanelProfile';
+import SidePanelMenu from '../SidePanelMenu';
 
 export default function SideMenu() {
   return (
     <header className='side-panel'>
-        <SideMenuProfile />
+        <SidePanelProfile />
+        <SidePanelMenu />        
     </header>
   )
 }

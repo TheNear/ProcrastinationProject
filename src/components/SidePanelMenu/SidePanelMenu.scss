@@ -1,0 +1,34 @@
+.side-menu {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  padding: 15px;
+  // border-radius: 0 10px 0 0;
+  // @include box-shadow;
+}
+
+.side-menu__list {
+
+}
+
+.side-menu__item {
+  padding: 5px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.side-menu__icon {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.side-menu__link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin-left: 10px;
+}

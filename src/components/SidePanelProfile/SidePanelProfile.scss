@@ -1,17 +1,33 @@
 .side-profile {
-  width: 100%;
   display: flex;
+  // max-height: 30%;
   flex-direction: column;
   align-items: center;
   padding: 15px;
+  // border-radius: 0 0 10px 0;
+  // @include box-shadow;
+  // margin-bottom: 10px;
 }
+
 
 .side-profile__photo {
   display: block;
-  width: 70%;
+  width: 60%;
+  // object-fit: cover;
 }
 
 .side-profile__info {
   padding: 10px 0;
   font-size: 20px;
 }
+
+@media only screen  and (max-width: $sc-big-medium) {
+  .side-profile  {
+    flex-direction: row;
+  }
+
+  .side-profile__photo {
+    width: auto;
+    height: 100%;
+  }
+};

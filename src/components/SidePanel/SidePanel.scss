@@ -1,0 +1,7 @@
+.side-panel {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  background-color: $item-color;
+  @include box-shadow;
+}

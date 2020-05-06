@@ -1,4 +1,5 @@
 @import './assets/scss/vars';
+@import './assets/scss/mixins';
 
 * {
   margin: 0;
@@ -9,17 +10,17 @@
 html, body {
   width: 100%;
   height: 100%;
-  
 }
 
-#root {
-  width: 100%;
-  height: 100%;
-  background-color: $bg-color;
+body { 
   color: $font-color;
   font-size: $font-size;
-  display: flex;
+  font-family: 'Roboto', sans-serif;
 }
 
 
-@import './components/SidePanel/index.scss';
+@import './pages/MainPage/MainPage.scss';
+@import './pages/AuthPage/AuthPage.scss';
+@import './components/SidePanel/SidePanel.scss';
+@import './components/SidePanelProfile/SidePanelProfile.scss';
+

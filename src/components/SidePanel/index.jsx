@@ -1,10 +1,10 @@
 import React from 'react';
-// import './index.scss';
+import SideMenuProfile from '../SidePanelProfile';
 
 export default function SideMenu() {
   return (
     <header className='side-panel'>
-        SOME TEXT
+        <SideMenuProfile />
     </header>
   )
 }

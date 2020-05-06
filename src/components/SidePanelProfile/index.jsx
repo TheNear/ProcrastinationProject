@@ -6,7 +6,9 @@ export default function SidePanelProfile() {
     <div className="side-profile">
       <img className="side-profile__photo" src={maleimg} alt="profile icon"/>
       <div className="side-profile__info">
-        <p className="side-profile__name">@Andrey Bublikov</p>
+        <p className="side-profile__name">@Andrey Bytilkin</p>
+        <p className="side-profile__points"><span className="side-profile__points-color">14.582</span> caps</p>
+        <p className="side-profile__points"><span className="side-profile__days-color">17</span> days in row</p>
       </div>
     </div>
   )

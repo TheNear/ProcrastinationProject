@@ -3,12 +3,6 @@
   height: 100%;
   flex: 1;
   padding: 15px;
-  // border-radius: 0 10px 0 0;
-  // @include box-shadow;
-}
-
-.side-menu__list {
-
 }
 
 .side-menu__item {
@@ -30,5 +24,26 @@
   display: block;
   width: 100%;
   height: 100%;
-  margin-left: 10px;
+  padding-left: 10px;
+  display: flex;
+  // justify-content: center;
+  align-items: center;
 }
+
+
+@media only screen  and (max-width: $sc-big-medium) {
+  .side-menu {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 13px;
+  }
+
+  .side-menu__icon {
+    display: none;
+  }
+
+  .side-menu__list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+};

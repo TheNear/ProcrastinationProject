@@ -1,33 +1,58 @@
 .side-profile {
   display: flex;
-  // max-height: 30%;
   flex-direction: column;
   align-items: center;
   padding: 15px;
-  // border-radius: 0 0 10px 0;
-  // @include box-shadow;
-  // margin-bottom: 10px;
 }
 
 
 .side-profile__photo {
   display: block;
   width: 60%;
-  // object-fit: cover;
 }
 
 .side-profile__info {
   padding: 10px 0;
-  font-size: 20px;
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
 }
 
-@media only screen  and (max-width: $sc-big-medium) {
+.side-profile__days-color {
+  color: $good-color;
+}
+
+.side-profile__points-color {
+  color: $normal-color;
+}
+
+@media only screen and (max-width: $sc-big-medium) {
   .side-profile  {
+    min-width: 220px;
+    flex-basis: 220px;
     flex-direction: row;
+    justify-content: space-between;
+    border-right: 1px solid $bg-color;
+    // font-size: 12px;
   }
 
   .side-profile__photo {
     width: auto;
     height: 100%;
+  }
+
+  .side-profile__info {
+    align-self: flex-end;
+    text-align: right;
+    padding: 0;
+  }
+
+  .side-profile__name {
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .side-profile__points {
+    font-size: 12px;
   }
 };

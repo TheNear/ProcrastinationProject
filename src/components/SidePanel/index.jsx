@@ -6,7 +6,8 @@ export default function SideMenu() {
   return (
     <header className='side-panel'>
         <SidePanelProfile />
-        <SidePanelMenu />        
+        <SidePanelMenu />
+                
     </header>
   )
 }

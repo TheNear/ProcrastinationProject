@@ -26,24 +26,47 @@
   height: 100%;
   padding-left: 10px;
   display: flex;
-  // justify-content: center;
   align-items: center;
 }
 
+.side-menu__toggler-label {
+  display: none;
+}
+
+.side-menu__hamburger {
+  display: none;
+}
+
+
 
 @media only screen  and (max-width: $sc-big-medium) {
+
+
   .side-menu {
+    width: auto;
+    height: auto;
+    position: fixed;
+    top: 50%;
+    right: 0;
+    @include box-shadow;
     display: flex;
+    transform: translate3d(100%, -50%, 0);
     justify-content: flex-end;
-    font-size: 13px;
+    font-size: 15px;
+    transition: all 0.5s ease;
   }
 
-  .side-menu__icon {
-    display: none;
+  .side-menu__hamburger {
+    display: block;
+  }
+
+  .side-menu.active {
+    transform: translate3d(0, -50%, 0);
   }
 
   .side-menu__list {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
   }
 };

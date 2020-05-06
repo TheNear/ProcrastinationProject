@@ -12,6 +12,7 @@
 @media only screen  and (max-width: $sc-big-medium) {
   .side-panel {
     flex-direction: row;
+    justify-content: space-between;
     width: auto;
     height: 100px;
   }

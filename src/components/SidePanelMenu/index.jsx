@@ -50,15 +50,29 @@ export default function SidePanelMenu() {
     toggleMenu(true);
   }
 
+  const onClickCloseMenu = () => {
+    setTimeout(() => {
+      toggleMenu(false)
+    },0);
+  };
+
+  const onEscCloseMenu = ({keyCode}) => {
+      if (keyCode === 27) {
+        toggleMenu(false)
+      }
+  };
+
   useEffect(() => {
-    if (menuActive) {
-        window.addEventListener('mouseup', () => {
-          setTimeout(() => {
-            toggleMenu(false)
-          },0)
-        }, {once: true})
-    }
-  }, [menuActive])
+      if(menuActive) {
+        document.addEventListener('mouseup', onClickCloseMenu);
+        document.addEventListener('keydown', onEscCloseMenu);
+      }
+       return () => {
+          document.removeEventListener('mouseup', onClickCloseMenu);
+          document.removeEventListener('keydown', onEscCloseMenu);
+       };
+    
+  }, [menuActive]);
 
   return (
     <Fragment>

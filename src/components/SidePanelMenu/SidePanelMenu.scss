@@ -66,10 +66,11 @@
   }
 
   .side-menu.active {
+    // display: flex;
     transform: translate3d(0, -50%, 0);
   }
 
-  .side-menu__list {
+  .side-menu__list {       
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;

@@ -1,0 +1,26 @@
+.side-more {
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  @include box-shadow;
+  border-radius: 5px;
+  top: 10px;
+  left: calc(100% + 10px);
+  opacity: 0;
+  animation: show-side-menu-top 0.8s cubic-bezier(.63,.04,.42,1.22);
+}
+
+.side-more.active {
+  opacity: 1;
+  transform: translate3d(0, 0 ,0);
+}
+
+@media only screen and (max-width: $sc-big-medium) {
+
+  .side-more {
+    top: calc(100% + 10px);
+    left: 10px;
+    animation: show-side-menu-left 0.8s cubic-bezier(.63,.04,.42,1.22);
+  }
+
+}

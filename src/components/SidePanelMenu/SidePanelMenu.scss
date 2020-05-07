@@ -1,8 +1,17 @@
 .side-menu {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   flex: 1;
   padding: 15px;
+}
+
+.side-menu__list {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
 .side-menu__item {
@@ -12,6 +21,12 @@
   align-items: center;
 }
 
+.side-menu__item-exit {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 13px;
+}
 
 
 .side-menu__icon {
@@ -61,6 +76,23 @@
     transition: all 0.5s ease;
   }
 
+  .side-menu__item-exit {
+    position: relative;
+    margin-top: 30px;
+    padding-top: 15px;
+    font-size: 13px;
+  } 
+
+  .side-menu__item-exit::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 1px;
+      background-color: $font-color;
+      box-shadow: 0 0 9px 1px rgb(137, 156, 220)
+  }
+
   .side-menu__hamburger {
     display: block;
     transition: transform 0.5s ease;
@@ -71,7 +103,6 @@
   }
 
   .side-menu.active {
-    // display: flex;
     transform: translate3d(0, -50%, 0);
   }
 

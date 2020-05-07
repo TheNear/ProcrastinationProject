@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTasks, faClipboardList, faAward, faComments, faHome } from '@fortawesome/free-solid-svg-icons'
+import { faTasks, faClipboardList, faAward, faComments, faHome, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from 'react-router-dom';
 import { CONST } from '../../assets/js/constants';
 import HamburgerButton from '../../componentHelpers/HamburgerButton';
@@ -94,8 +94,13 @@ export default function SidePanelMenu() {
               <NavLink exact to={link.to} className="side-menu__link">{link.title}</NavLink>
             </li>
           ))}
+          <li className="side-menu__item side-menu__item-exit">
+            <div className="side-menu__icon"><FontAwesomeIcon icon={faSignOutAlt} /></div>
+            <a href='/' alt='loggout button' className="side-menu__link">Выйти из аккаунта</a>
+          </li>
         </ul>
       </nav>
+      
     </Fragment>
   )
 }

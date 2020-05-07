@@ -1,6 +1,6 @@
 .side-more {
   position: absolute;
-  width: 400px;
+  width: 470px;
   height: 300px;
   @include box-shadow;
   border-radius: 5px;
@@ -23,4 +23,11 @@
     animation: show-side-menu-left 0.8s cubic-bezier(.63,.04,.42,1.22);
   }
 
+}
+
+@media only screen and (max-width: $sc-big-small) {
+   
+  .side-more {
+    width: calc(100% - 20px);
+  }
 }

@@ -46,16 +46,18 @@
 
 
 .side-profile__photo:hover ~ .side-profile__more,
-.side-profile__more:hover {
+.side-profile__more:hover,
+.side-profile__more:focus {
   color: white;
-  transform: rotateZ(360deg);
 }
 
-// .side-profile__more:hover
+.side-profile__more:focus {
+  outline: none;
+}
 
 .side-profile__more.active {
   color: white;
-  transform: rotateZ(360deg)
+  transform: rotateZ(360deg) scale3d(1.3,1.3,1.3);;
 }
 
 .side-profile__info {

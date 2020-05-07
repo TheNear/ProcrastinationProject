@@ -63,6 +63,11 @@
 
   .side-menu__hamburger {
     display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .side-menu__hamburger:focus {
+    transform: scale3d(1.1, 1.1,1.1);
   }
 
   .side-menu.active {

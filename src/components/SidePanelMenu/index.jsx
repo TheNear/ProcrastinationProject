@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTasks, faClipboardList, faAward, faComments, faHome } from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from 'react-router-dom';
+import { CONST } from '../../assets/js/constants';
 import HamburgerButton from '../../componentHelpers/HamburgerButton';
 
 const navigation = [
@@ -47,7 +48,7 @@ export default function SidePanelMenu() {
   const [menuActive, toggleMenu] = useState(false);
 
   const toggleMenuHandler = () => {
-    toggleMenu(true);
+    toggleMenu(!menuActive);
   }
 
   const onClickCloseMenu = () => {
@@ -57,7 +58,7 @@ export default function SidePanelMenu() {
   };
 
   const onEscCloseMenu = ({keyCode}) => {
-      if (keyCode === 27) {
+      if (keyCode === CONST.ESC_CODE) {
         toggleMenu(false)
       }
   };

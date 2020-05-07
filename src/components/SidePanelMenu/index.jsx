@@ -51,6 +51,8 @@ export default function SidePanelMenu() {
     toggleMenu(!menuActive);
   }
 
+
+  
   const onClickCloseMenu = () => {
     setTimeout(() => {
       toggleMenu(false)

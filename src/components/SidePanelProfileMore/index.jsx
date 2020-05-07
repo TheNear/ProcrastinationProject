@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 
-export default function SidePanelProfileMore() {
+export default function SidePanelProfileMore({changeRef}) {
+  const wrapRef = useRef(null);
+
+  useEffect(() => {
+    changeRef(wrapRef)
+  }, [wrapRef, changeRef])
+
   return (
-    <div className="side-more active">
-      
+    <div ref={wrapRef} className="side-more active">
+      <p>some text</p>
+      <h1>some h1</h1>
     </div>
   )
 }

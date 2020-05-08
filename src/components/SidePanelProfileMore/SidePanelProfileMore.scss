@@ -7,12 +7,13 @@
   top: 10px;
   left: calc(100% + 10px);
   opacity: 0;
-  animation: show-side-menu-top 0.8s cubic-bezier(.63,.04,.42,1.22);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transform: translate3d(0, -120% ,0);
 }
 
 .side-more.active {
   opacity: 1;
-  transform: translate3d(0, 0 ,0);
+  transform: translate3d(0, 0% ,0);
 }
 
 @media only screen and (max-width: $sc-big-medium) {
@@ -20,7 +21,7 @@
   .side-more {
     top: calc(100% + 10px);
     left: 10px;
-    animation: show-side-menu-left 0.8s cubic-bezier(.63,.04,.42,1.22);
+    transform: translate3d(-120%, 0 ,0);
   }
 
 }

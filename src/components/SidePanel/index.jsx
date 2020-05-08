@@ -16,7 +16,6 @@ export default function SideMenu() {
 
 
   useEffect(() => {
-
     const onOutsideMenuClick = ({target}) => {
       if (refMenu.current && !refMenu.current.contains(target)) {
         toggleUserMenu(false);
@@ -44,7 +43,7 @@ export default function SideMenu() {
     <header className='side-panel'>
         <SidePanelProfile isShowUserMenu={userMenu} showUserMenuHandler={toggleMenuHandler} />
         <SidePanelMenu />
-        {userMenu && <SidePanelProfileMore changeRef={changeRefMenu}/>}
+        <SidePanelProfileMore show={userMenu} duration={500} changeRef={changeRefMenu}/>
     </header>
   )
 }

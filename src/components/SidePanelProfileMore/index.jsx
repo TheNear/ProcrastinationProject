@@ -1,6 +1,10 @@
 import React, { useRef, useEffect } from 'react';
+import WithAnimation from '../../HOCs/WithAnimation';
 
-export default function SidePanelProfileMore({changeRef}) {
+
+const SidePanelProfileMore = ({changeRef, show}) => {
+
+
   const wrapRef = useRef(null);
 
   useEffect(() => {
@@ -8,9 +12,11 @@ export default function SidePanelProfileMore({changeRef}) {
   }, [wrapRef, changeRef])
 
   return (
-    <div ref={wrapRef} className="side-more active">
+    <div  ref={wrapRef} className={`side-more ${show ? 'active' : ''}`}>
       <p>some text</p>
       <h1>some h1</h1>
     </div>
   )
 }
+
+export default WithAnimation(SidePanelProfileMore);

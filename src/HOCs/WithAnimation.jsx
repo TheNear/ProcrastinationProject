@@ -14,7 +14,7 @@ export default function WithAnimation(Component) {
             ...this.state,
             mounted: this.props.show,
           })
-        }, this.props.duration)
+        }, this.props.show ? 0 : this.props.duration)
       }
     }
 

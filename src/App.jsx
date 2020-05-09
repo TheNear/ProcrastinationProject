@@ -6,12 +6,14 @@ import { store } from './redux/store';
 
 
 import MainPage from './pages/MainPage';
+import ModalPopupGroup from './componentHelpers/ModalPopupGroup';
 
 export default function App() {
   return (
     <Router>
       <Provider store={store}>
         <MainPage />
+        <ModalPopupGroup />
       </Provider>
     </Router>
   )

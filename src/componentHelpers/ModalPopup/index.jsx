@@ -7,7 +7,7 @@ import { deleteEvenet } from '../../redux/modalPopup/action';
 import { CONST } from '../../assets/js/constants';
 
 
-const ModalPopup = ({show, showSet, children, type, id, delay}) => {
+const ModalPopup = ({show, setShow, children, type, id, delay}) => {
 
   const dispatch = useDispatch();
 
@@ -19,7 +19,7 @@ const ModalPopup = ({show, showSet, children, type, id, delay}) => {
 
   useEffect(() => {
     const removeClass = setTimeout(() => {
-      showSet(false);
+      setShow(false);
       setTimeout(() => {
         dispatch(deleteEvenet(id));
       }, delay);
@@ -27,10 +27,10 @@ const ModalPopup = ({show, showSet, children, type, id, delay}) => {
     return () => {
       clearTimeout(removeClass);
     }
-  }, [id, dispatch, delay, showSet])
+  }, [id, dispatch, delay, setShow])
 
   return (
-      <div className={`modal-popup ${type}-popup ${(show)? 'active' : ''}`}>
+      <div className={`modal-popup ${type}-popup ${show ? 'active' : ''}`}>
         { type !== 'base' && <FontAwesomeIcon className="modal-popup__icon" icon={typeIcon[type]}/>}
         <p className="modal-popup__text">{ children }</p>
       </div>

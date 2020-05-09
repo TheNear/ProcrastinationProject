@@ -15,7 +15,7 @@ export default function WithAnimation(Component) {
 
     return (
       (isMounted || props.show) && (
-        <Component {...props} show={isMounted && props.show} showSet={setIsMounted} />
+        <Component {...props} show={isMounted && props.show} setShow={setIsMounted} />
       )
     );
   }

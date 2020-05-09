@@ -1,0 +1,43 @@
+.modal-popup {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 5px 20px;
+  border-radius: 5px;
+  background-color: $item-color;
+  color: $lime-yellow;
+  box-shadow: 0 0 8px 2px rgba($lime-yellow, 0.37);
+  z-index: 999;
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transform: translate3d(0, 120%, 0);
+}
+
+.modal-popup__item {
+  padding: 10px 0;
+}
+
+.modal-popup.base-popup {
+  color: $font-color;
+  @include box-shadow
+}
+
+.modal-popup.warn-popup {
+  color: $lime-yellow;
+  box-shadow: 0 0 8px 2px rgba($lime-yellow, 0.37);
+}
+
+.modal-popup.error-popup {
+  color: $chocolate;
+  box-shadow: 0 0 8px 2px rgba($chocolate, 0.37);
+}
+
+.modal-popup.good-popup {
+  color: $mint;
+  box-shadow: 0 0 8px 2px rgba($mint, 0.37);
+}
+
+.modal-popup.active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}

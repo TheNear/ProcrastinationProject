@@ -16,7 +16,7 @@ a {
 html, body, #root {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 ul, li {
@@ -29,9 +29,14 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+#root {
+  position: relative;
+}
+
 
 @import './pages/MainPage/MainPage.scss';
 @import './pages/AuthPage/AuthPage.scss';
+@import './componentHelpers/ModalPopup/ModalPopup.scss';
 @import './components/SidePanel/SidePanel.scss';
 @import './components/SidePanelProfile/SidePanelProfile.scss';
 @import './components/SidePanelMenu/SidePanelMenu.scss';

@@ -1,29 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function WithAnimation(Component) {
-  return class WithAnimationWrap extends React.Component {
-    state = {
-      mounted: false,
-    }
+  const WithAnimationWrap = props => {
+    const [isMounted, setIsMounted] = useState(false);
 
-    componentDidUpdate() {
+    useEffect(() => {
 
-      if(this.state.mounted !== this.props.show) {
-        setTimeout(() => {
-          this.setState({
-            ...this.state,
-            mounted: this.props.show,
-          })
-        }, this.props.show ? 0 : this.props.duration)
-      }
-    }
+      const timeout = setTimeout(
+        () => setIsMounted(props.show),
+        props.show ? 0 : props.duration
+      );
+      return () => clearTimeout(timeout);
+    }, [props.show, props.duration]);
 
-    render() {
-     if(this.props.show) {
-       return <Component {...this.props} show={this.state.mounted}/>
-     } else {
-       return this.state.mounted && <Component {...this.props}/>
-     }
-    }
+    return (
+      (isMounted || props.show) && (
+        <Component {...props} show={isMounted && props.show} />
+      )
+    );
   }
+  return WithAnimationWrap;
 }

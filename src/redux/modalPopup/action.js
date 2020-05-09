@@ -1,4 +1,4 @@
-import { PUSH_EVENT_POPUP } from './types';
+import { PUSH_EVENT_POPUP, DELETE_EVENT_POPUP } from './types';
 
 export const initErrorEvent = (message) => ({
   type: PUSH_EVENT_POPUP,
@@ -23,3 +23,8 @@ export const initSuccessEvent = (message) => ({
     message
   }
 });
+
+export const deleteEvenet = (id) => ({
+  type: DELETE_EVENT_POPUP,
+  payload: id,
+})

@@ -7,9 +7,17 @@ export default function ModalPopupGroup() {
 
   return (
     <div className="modal-popup__group">
-      {modal.map(item => {
-        
-      })}
+      {modal.map((item) => (
+        < ModalPopup 
+          key={item.id}
+          id={item.id}
+          show={true}
+          delay={500}
+          type={item.type}
+        >
+          {item.message}
+        </ModalPopup>
+      ))}
     </div>
   )
 }

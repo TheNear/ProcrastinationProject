@@ -4,6 +4,7 @@ import { faTasks, faClipboardList, faAward, faComments, faHome, faSignOutAlt } f
 import { NavLink } from 'react-router-dom';
 import { CONST } from '../../assets/js/constants';
 import HamburgerButton from '../../componentHelpers/HamburgerButton';
+import { useDispatch } from 'react-redux';
 
 const navigation = [
   {
@@ -77,6 +78,21 @@ export default function SidePanelMenu() {
     
   }, [menuActive]);
 
+
+  const dispatch = useDispatch();
+  const onClickHandler = (evt) => {
+    evt.preventDefault();
+    console.log('hdfs')
+    dispatch({
+      type: 'PUSH_EVENT_POPUP',
+      payload: {
+        type: 'error',
+        id: Date.now() + 'id',
+        message: 'testovoe soobshenie'
+      }
+    })
+  };
+
   return (
     <Fragment>
       <HamburgerButton 
@@ -96,7 +112,7 @@ export default function SidePanelMenu() {
           ))}
           <li className="side-menu__item side-menu__item-exit">
             <div className="side-menu__icon"><FontAwesomeIcon icon={faSignOutAlt} /></div>
-            <a href='/' alt='loggout button' className="side-menu__link">Выйти из аккаунта</a>
+            <a href='/' alt='loggout button' onClick={onClickHandler} className="side-menu__link">Выйти из аккаунта</a>
           </li>
         </ul>
       </nav>

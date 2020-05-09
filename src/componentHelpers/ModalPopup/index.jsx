@@ -16,13 +16,12 @@ const ModalPopup = ({show, children, type}) => {
   return (
     createPortal(
       <div className={`modal-popup ${type}-popup ${show ? 'active' : ''}`}>
-          { type !== 'base' && <FontAwesomeIcon icon={typeIcon[type]}/>}
+          { type !== 'base' && <FontAwesomeIcon className="modal-popup__icon" icon={typeIcon[type]}/>}
           { children }
       </div>,
-      document.getElementById('root')
+      document.querySelector('.modal-popup__group')
     )
   )
 }
 
-// export default WithAnimation(ModalPopup);
-export default ModalPopup;
+export default WithAnimation(ModalPopup);

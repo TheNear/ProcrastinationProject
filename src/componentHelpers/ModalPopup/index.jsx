@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import WithAnimation from '../../HOCs/WithAnimation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -10,14 +10,23 @@ const ModalPopup = ({show, children, type}) => {
   const typeIcon = {
     'warn' : faExclamationTriangle,
     'error' : faExclamationCircle,
-    'good' : faThumbsUp
+    'success' : faThumbsUp
   }
+
+  // useEffect(() => {
+  //   const removeElement = setTimeout(() => {
+  //     toggleShow(false)
+  //   }, 2000)
+  //   return () => {
+  //     clearTimeout(removeElement);
+  //   }
+  // }, [toggleShow])
 
   return (
     createPortal(
       <div className={`modal-popup ${type}-popup ${show ? 'active' : ''}`}>
-          { type !== 'base' && <FontAwesomeIcon className="modal-popup__icon" icon={typeIcon[type]}/>}
-          { children }
+        { type !== 'base' && <FontAwesomeIcon className="modal-popup__icon" icon={typeIcon[type]}/>}
+        <p className="modal-popup__text">{ children }</p>
       </div>,
       document.querySelector('.modal-popup__group')
     )

@@ -1,12 +1,15 @@
 
 
 .modal-popup {
+  display: flex;
+  max-width: 400px;
   position: static;
   margin-top: 15px;
   padding: 10px 20px;
   border-radius: 5px;
   background-color: $item-color;
   color: $lime-yellow;
+  align-items: center;
   box-shadow: 0 0 8px 2px rgba($lime-yellow, 0.37);
   opacity: 0;
   transition: transform 0.5s ease, opacity 0.5s ease;
@@ -15,8 +18,9 @@
 
 .modal-popup__group {
   position: absolute;
-  right: 10px;
-  bottom: 10px;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -47,7 +51,7 @@
   box-shadow: 0 0 8px 2px rgba($chocolate, 0.37);
 }
 
-.modal-popup.good-popup {
+.modal-popup.success-popup {
   color: $mint;
   box-shadow: 0 0 8px 2px rgba($mint, 0.37);
 }

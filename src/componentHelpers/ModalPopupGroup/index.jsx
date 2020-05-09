@@ -1,17 +1,17 @@
-import React from 'react'
-import ModalPopup from '../ModalPopup'
-import { useSelector } from 'react-redux'
+import React from "react";
+import { useSelector } from "react-redux";
+import ModalPopup from "../ModalPopup";
 
 export default function ModalPopupGroup() {
-  const modal = useSelector(state => state.modalPopupReducer)
+  const modal = useSelector((state) => state.modalPopupReducer);
 
   return (
     <div className="modal-popup__group">
       {modal.map((item) => (
-        < ModalPopup 
+        <ModalPopup
           key={item.id}
           id={item.id}
-          show={true}
+          show
           delay={500}
           type={item.type}
         >
@@ -19,5 +19,5 @@ export default function ModalPopupGroup() {
         </ModalPopup>
       ))}
     </div>
-  )
+  );
 }

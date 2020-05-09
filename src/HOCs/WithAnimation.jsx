@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 export default function WithAnimation(Component) {
-  const WithAnimationWrap = props => {
+  const WithAnimationWrap = (props) => {
     const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
-
       const timeout = setTimeout(
         () => setIsMounted(props.show),
         props.show ? 0 : props.duration
@@ -15,9 +14,13 @@ export default function WithAnimation(Component) {
 
     return (
       (isMounted || props.show) && (
-        <Component {...props} show={isMounted && props.show} setShow={setIsMounted} />
+        <Component
+          {...props}
+          show={isMounted && props.show}
+          setShow={setIsMounted}
+        />
       )
     );
-  }
+  };
   return WithAnimationWrap;
 }

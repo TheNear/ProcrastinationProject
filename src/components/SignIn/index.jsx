@@ -16,8 +16,19 @@ function SignIn() {
         <Input className="signin__password" type="password">
           Password
         </Input>
-        <Button type="submit" />
+        <Button type="submit" className="signin__submit-btn">
+          Sign In
+        </Button>
       </form>
+      <p className="auth-signin__text">
+        Don&apos;t have account?{" "}
+        <a className="auth-signin__link" href="/" alt="register link">
+          Sign Up
+        </a>
+      </p>
+      <a className="auth-signin__link" href="/" alt="Forgot password">
+        Forgot your password?
+      </a>
     </>
   );
 }

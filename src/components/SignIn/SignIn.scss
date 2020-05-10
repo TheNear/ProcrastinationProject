@@ -7,18 +7,27 @@
 }
 
 .signin__submit-btn {
+  background-color: $second-font-color;
   margin: 10px 0;
   border-radius: 10px;
+  transition: background-color 0.5s ease;
+  cursor: pointer;
+}
+
+.signin__submit-btn:focus,
+.signin__submit-btn:hover {
+  background-color: $font-color;
+  outline: none;
 }
 
 .auth-signin__text {
-  color: black;
+  color: $second-font-color;
   font-size: 13px;
   margin-top: 10px;
 }
 
 .auth-signin__link {
   font-size: 14px;
-  color: $font-color;
+  color: $eton-blue;
   text-decoration: underline;
 }

@@ -1,0 +1,20 @@
+.auth-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  padding: 40px;
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: -1px 1px 10px 7px #7a7a86a6;
+  animation: show-side-menu-top 1s ease;
+}

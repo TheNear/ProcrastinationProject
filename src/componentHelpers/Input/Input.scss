@@ -1,0 +1,41 @@
+.common-input--wrap {
+  margin-top: 10px;
+  box-sizing: content-box;
+  position: relative;
+  width: 100%;
+}
+
+.common-input__label {
+  position: absolute;
+  color: gray;
+  font-size: 15px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  transition: all 0.5s ease;
+}
+
+.common-input__input {
+  width: 100%;
+  padding: 10px 5px 5px 5px;
+  margin: 5px 0;
+  border: none;
+  transition: border-bottom-color 0.5s ease;
+  border-bottom: 2px solid gray;
+}
+
+.common-input__input:focus {
+  outline: none;
+}
+
+
+.common-input__input:focus ~ .common-input__label,
+.common-input__input:valid ~ .common-input__label {
+  color: $good-color;
+  font-size: 10px;
+  top: 0;
+}
+
+.common-input__input:focus {
+  border-bottom-color: $good-color;
+}

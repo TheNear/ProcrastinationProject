@@ -12,7 +12,7 @@ export default function ModalPopupGroup() {
           key={item.id}
           id={item.id}
           show
-          delay={500}
+          duration={500}
           type={item.type}
         >
           {item.message}

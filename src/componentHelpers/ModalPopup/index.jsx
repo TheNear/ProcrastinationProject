@@ -11,7 +11,7 @@ import WithAnimation from "../../HOCs/WithAnimation";
 import { deleteEvenet } from "../../redux/modalPopup/action";
 import CONST from "../../assets/js/constants";
 
-const ModalPopup = ({ show, setShow, children, type, id, delay }) => {
+const ModalPopup = ({ show, setShow, children, type, id, duration }) => {
   const dispatch = useDispatch();
 
   const typeIcon = {
@@ -25,12 +25,12 @@ const ModalPopup = ({ show, setShow, children, type, id, delay }) => {
       setShow(false);
       setTimeout(() => {
         dispatch(deleteEvenet(id));
-      }, delay);
+      }, duration);
     }, CONST.POPUP_LIFETIME);
     return () => {
       clearTimeout(removeClass);
     };
-  }, [id, dispatch, delay, setShow]);
+  }, [id, dispatch, duration, setShow]);
 
   return (
     <div className={`modal-popup ${type}-popup ${show ? "active" : ""}`}>
@@ -52,7 +52,7 @@ ModalPopup.propTypes = {
   ]),
   type: PropTypes.string,
   id: PropTypes.string,
-  delay: PropTypes.number,
+  duration: PropTypes.number,
 };
 
 ModalPopup.defaultProps = {
@@ -60,7 +60,7 @@ ModalPopup.defaultProps = {
   children: "string",
   type: "error",
   id: "123412414id",
-  delay: 500,
+  duration: 500,
 };
 
 export default WithAnimation(ModalPopup);

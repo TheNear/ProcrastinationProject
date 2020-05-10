@@ -30,16 +30,21 @@ body {
 }
 
 #root {
+  background: linear-gradient(to bottom right, $bg-color, darken($bg-color, 7%) );
   position: relative;
 }
 
 
 @import './pages/MainPage/MainPage.scss';
 @import './pages/AuthPage/AuthPage.scss';
+@import './componentHelpers/Input/Input.scss';
+@import './componentHelpers/Button/Button.scss';
 @import './componentHelpers/ModalPopup/ModalPopup.scss';
 @import './componentHelpers/ModalPopupGroup/ModalPopupGroup.scss';
 @import './components/SidePanel/SidePanel.scss';
 @import './components/SidePanelProfile/SidePanelProfile.scss';
 @import './components/SidePanelMenu/SidePanelMenu.scss';
 @import './components/SidePanelProfileMore/SidePanelProfileMore.scss';
+@import './components/SignIn/SignIn.scss';
+@import './components/SignUp/SignUp.scss';
 

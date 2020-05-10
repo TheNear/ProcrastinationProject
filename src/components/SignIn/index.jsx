@@ -2,10 +2,24 @@
 import React, { Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
 import Input from "../../componentHelpers/Input";
 import Button from "../../componentHelpers/Button";
+import { initPopupEvent } from "../../redux/modalPopup/action";
 
 function SignIn() {
+  const dispatch = useDispatch();
+
+  const clickLinkHandler = (evt) => {
+    evt.preventDefault();
+    dispatch(
+      initPopupEvent(
+        "Данная функция еще не реализована, мы работаем над ней. :(",
+        "error"
+      )
+    );
+  };
+
   return (
     <>
       <FontAwesomeIcon icon={faUser} className="auth-signin__icon" size="10x" />
@@ -22,11 +36,21 @@ function SignIn() {
       </form>
       <p className="auth-signin__text">
         Don&apos;t have account?{" "}
-        <a className="auth-signin__link" href="/" alt="register link">
+        <a
+          className="auth-signin__link"
+          href="/"
+          alt="register link"
+          onClick={clickLinkHandler}
+        >
           Sign Up
         </a>
       </p>
-      <a className="auth-signin__link" href="/" alt="Forgot password">
+      <a
+        className="auth-signin__link"
+        href="/"
+        alt="Forgot password"
+        onClick={clickLinkHandler}
+      >
         Forgot your password?
       </a>
     </>

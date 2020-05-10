@@ -10,18 +10,20 @@
   color: gray;
   font-size: 15px;
   top: 50%;
-  left: 0;
+  left: 5px;
   transform: translateY(-50%);
   transition: all 0.5s ease;
 }
 
 .common-input__input {
+  position: relative;
   width: 100%;
   padding: 10px 5px 5px 5px;
   margin: 5px 0;
   border: none;
-  transition: border-bottom-color 0.5s ease;
+  transition: border-bottom-color 0.5s ease, box-shadow 0.5s ease;
   border-bottom: 2px solid gray;
+  box-shadow: 0 0 20px 0px gray;
 }
 
 .common-input__input:focus {
@@ -33,9 +35,10 @@
 .common-input__input:valid ~ .common-input__label {
   color: $eton-blue;
   font-size: 10px;
-  top: 0;
+  top: -5px;
 }
 
 .common-input__input:focus {
-  border-bottom-color: $good-color;
+  border-bottom-color: $eton-blue;
+  box-shadow: 0 0 20px 0px $eton-blue;
 }

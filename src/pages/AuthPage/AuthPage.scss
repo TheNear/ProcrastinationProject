@@ -16,6 +16,7 @@
   border-radius: 15px;
   color: $second-font-color;
   background-color: #fff;
+  background: linear-gradient(to right bottom, white, #d2d2d2);
   line-height: 1.3;
   box-shadow: -1px 1px 10px 7px #7a7a86a6;
   animation: show-side-menu-top 1s ease;
@@ -27,19 +28,21 @@
 
 .auth__icon {
   margin-bottom: 30px;
+  filter: drop-shadow(1px 1px 1px darken($second-font-color, 30%));
 }
 
 .auth__submit-btn {
   background-color: $second-font-color;
   margin: 10px 0;
   border-radius: 10px;
-  transition: background-color 0.5s ease;
+  transition: background-color 0.5s ease, box-shadow 0.5s ease;
   cursor: pointer;
 }
 
 .auth__submit-btn:focus,
 .auth__submit-btn:hover {
-  background-color: $font-color;
+  box-shadow: 0 0 20px 0px $eton-blue;
+  background-color: $eton-blue;
   outline: none;
 }
 

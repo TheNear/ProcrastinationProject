@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUserGraduate } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import Input from "../../componentHelpers/Input";
 import Button from "../../componentHelpers/Button";
@@ -22,7 +22,7 @@ function SignIn() {
 
   return (
     <>
-      <FontAwesomeIcon icon={faUser} className="auth__icon" size="10x" />
+      <FontAwesomeIcon icon={faUserGraduate} className="auth__icon" size="7x" />
       <form className="auth__form" action="post">
         <Input className="auth__email" type="text">
           Username

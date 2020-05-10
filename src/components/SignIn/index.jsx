@@ -22,31 +22,31 @@ function SignIn() {
 
   return (
     <>
-      <FontAwesomeIcon icon={faUser} className="auth-signin__icon" size="10x" />
-      <form className="auth-signin__form" action="post">
-        <Input className="signin__email" type="text">
+      <FontAwesomeIcon icon={faUser} className="auth__icon" size="10x" />
+      <form className="auth__form" action="post">
+        <Input className="auth__email" type="text">
           Username
         </Input>
-        <Input className="signin__password" type="password">
+        <Input className="auth__password" type="password">
           Password
         </Input>
-        <Button type="submit" className="signin__submit-btn">
+        <Button type="submit" className="auth__submit-btn">
           Sign In
         </Button>
       </form>
-      <p className="auth-signin__text">
+      <p className="auth__text">
         Don&apos;t have account?{" "}
         <a
-          className="auth-signin__link"
+          className="auth__link"
           href="/"
           alt="register link"
           onClick={clickLinkHandler}
         >
-          Sign Up
+          Register
         </a>
       </p>
       <a
-        className="auth-signin__link"
+        className="auth__link"
         href="/"
         alt="Forgot password"
         onClick={clickLinkHandler}

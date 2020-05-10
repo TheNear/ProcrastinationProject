@@ -20,3 +20,37 @@
   box-shadow: -1px 1px 10px 7px #7a7a86a6;
   animation: show-side-menu-top 1s ease;
 }
+
+.auth__form {
+  width: 100%;
+}
+
+.auth__icon {
+  margin-bottom: 30px;
+}
+
+.auth__submit-btn {
+  background-color: $second-font-color;
+  margin: 10px 0;
+  border-radius: 10px;
+  transition: background-color 0.5s ease;
+  cursor: pointer;
+}
+
+.auth__submit-btn:focus,
+.auth__submit-btn:hover {
+  background-color: $font-color;
+  outline: none;
+}
+
+.auth__text {
+  color: $second-font-color;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.auth__link {
+  font-size: 14px;
+  color: $eton-blue;
+  text-decoration: underline;
+}

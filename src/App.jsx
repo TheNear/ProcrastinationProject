@@ -5,8 +5,9 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 
 import MainPage from "./pages/MainPage";
-import ModalPopupGroup from "./componentHelpers/ModalPopupGroup";
+// import ModalPopupGroup from "./componentHelpers/ModalPopupGroup";
 import AuthPage from "./pages/AuthPage";
+import ModalPopupGroupContainer from "./containers/ModalPopupGroudContainer";
 
 export default function App() {
   return (
@@ -14,7 +15,8 @@ export default function App() {
       <Provider store={store}>
         {/* <MainPage /> */}
         <AuthPage />
-        <ModalPopupGroup />
+        {/* <ModalPopupGroup /> */}
+        <ModalPopupGroupContainer />
       </Provider>
     </Router>
   );

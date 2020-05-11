@@ -5,6 +5,7 @@ export const initPopupEvent = (message, type) => ({
   payload: {
     type,
     message,
+    id: `${Date.now()}id`,
   },
 });
 

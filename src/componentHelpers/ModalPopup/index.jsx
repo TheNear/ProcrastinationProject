@@ -13,6 +13,7 @@ import CONST from "../../assets/js/constants";
 
 const ModalPopup = ({ show, setShow, children, type, id, duration }) => {
   const dispatch = useDispatch();
+  console.log("popupRedner");
 
   const typeIcon = {
     warn: faExclamationTriangle,

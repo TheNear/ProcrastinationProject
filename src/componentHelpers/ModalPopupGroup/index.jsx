@@ -4,6 +4,7 @@ import ModalPopup from "../ModalPopup";
 
 export default function ModalPopupGroup() {
   const modal = useSelector((state) => state.modalPopupReducer);
+  console.log("render");
 
   return (
     <div className="modal-popup__group">

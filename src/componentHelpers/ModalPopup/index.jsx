@@ -8,12 +8,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import WithAnimation from "../../HOCs/WithAnimation";
-import { deleteEvenet } from "../../redux/modalPopup/action";
+import { deleteEvent } from "../../redux/modalPopup/action";
 import CONST from "../../assets/js/constants";
 
 const ModalPopup = ({ show, setShow, children, type, id, duration }) => {
   const dispatch = useDispatch();
-  console.log("popupRedner");
 
   const typeIcon = {
     warn: faExclamationTriangle,
@@ -25,7 +24,7 @@ const ModalPopup = ({ show, setShow, children, type, id, duration }) => {
     const removeClass = setTimeout(() => {
       setShow(false);
       setTimeout(() => {
-        dispatch(deleteEvenet(id));
+        dispatch(deleteEvent(id));
       }, duration);
     }, CONST.POPUP_LIFETIME);
     return () => {
@@ -52,15 +51,14 @@ ModalPopup.propTypes = {
     PropTypes.number,
   ]),
   type: PropTypes.string,
-  id: PropTypes.string,
+  id: PropTypes.string.isRequired,
   duration: PropTypes.number,
 };
 
 ModalPopup.defaultProps = {
   setShow: () => {},
-  children: "string",
+  children: "Возникла какая-то ошибка",
   type: "error",
-  id: "123412414id",
   duration: 500,
 };
 

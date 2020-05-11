@@ -9,7 +9,7 @@ export const initPopupEvent = (message, type) => ({
   },
 });
 
-export const deleteEvenet = (id) => ({
+export const deleteEvent = (id) => ({
   type: DELETE_EVENT_POPUP,
   payload: id,
 });

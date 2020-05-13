@@ -33,6 +33,7 @@ function SignIn() {
   const onFormSubmit = (evt) => {
     evt.preventDefault();
     dispatch(signIn({ email, password }));
+    setPassword("");
   };
 
   return (
@@ -43,7 +44,7 @@ function SignIn() {
           onChange={setEmail}
           value={email}
           className="auth__email"
-          type="text"
+          type="email"
         >
           Username
         </Input>

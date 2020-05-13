@@ -7,6 +7,7 @@ function Input({ type, className, children, onChange, value }) {
       <input
         className={`common-input__input ${className}`}
         type={type}
+        autoComplete={type === "password" ? "new-password" : type}
         name={className}
         id={className}
         required

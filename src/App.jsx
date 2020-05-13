@@ -9,6 +9,7 @@ import store from "./redux/store";
 // import MainPage from "./pages/MainPage";
 import ModalPopupGroup from "./componentHelpers/ModalPopupGroup";
 import AuthPage from "./pages/AuthPage";
+import AuthIsLoaded from "./components/AuthIsLoaded";
 
 const firebaseProps = {
   firebase,
@@ -22,9 +23,11 @@ export default function App() {
     <Router>
       <Provider store={store}>
         <ReactReduxFirebaseProvider {...firebaseProps}>
-          {/* <MainPage /> */}
-          <AuthPage />
-          <ModalPopupGroup />
+          <AuthIsLoaded>
+            {/* <MainPage /> */}
+            <AuthPage />
+            <ModalPopupGroup />
+          </AuthIsLoaded>
         </ReactReduxFirebaseProvider>
       </Provider>
     </Router>

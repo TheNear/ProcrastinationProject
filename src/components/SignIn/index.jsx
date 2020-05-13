@@ -3,6 +3,7 @@ import React, { Fragment, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserGraduate } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import Input from "../../componentHelpers/Input";
 import Button from "../../componentHelpers/Button";
 import { initPopupEvent } from "../../redux/modalPopup/action";
@@ -10,6 +11,7 @@ import { signIn } from "../../redux/firebaseAuth/action";
 
 function SignIn() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,6 +23,11 @@ function SignIn() {
         "error"
       )
     );
+  };
+
+  const regLinkHandler = (evt) => {
+    evt.preventDefault();
+    history.push("/registration");
   };
 
   const onFormSubmit = (evt) => {
@@ -58,7 +65,7 @@ function SignIn() {
           className="auth__link"
           href="/"
           alt="register link"
-          onClick={clickLinkHandler}
+          onClick={regLinkHandler}
         >
           Register
         </a>

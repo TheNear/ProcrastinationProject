@@ -1,6 +1,6 @@
 import { PUSH_EVENT_POPUP, DELETE_EVENT_POPUP } from "./types";
 
-export const initPopupEvent = (message, type) => ({
+export const initPopupEvent = ({ message, type }) => ({
   type: PUSH_EVENT_POPUP,
   payload: {
     type,

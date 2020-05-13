@@ -1,3 +1,14 @@
+import { initPopupEvent } from "../modalPopup/action";
+
+const errorList = {
+  "auth/invalid-email": "Некорректно введён E-mail адресс, попробуйте снова.",
+  "auth/user-not-found": "Пользователь не найдет, попробуйте другой email",
+  "auth/wrong-password":
+    "Неверно введён пароль. Проверьте раскладку, CAPSLOCK и попробуйте снова.",
+  "auth/network-request-failed":
+    "Проблема с интернет соединением или с сервером, попробуйте позже.",
+};
+
 export const signIn = ({ email, password }) => (
   dispatch,
   getState,
@@ -7,8 +18,24 @@ export const signIn = ({ email, password }) => (
   firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
-    .then((response) => console.log(response))
-    .catch((error) => console.log(error));
+    .then((response) =>
+      dispatch(
+        initPopupEvent({
+          type: "success",
+          message: `Добро пожаловать ${response.user.email}`,
+        })
+      )
+    )
+    .catch(
+      (error) =>
+        dispatch(
+          initPopupEvent({
+            type: "error",
+            message: errorList[error.code] || error.message,
+          })
+        )
+      // console.log(errorList[error.code] || error)
+    );
 };
 
 export const signOut = () => (dispatch, getState, { getFirebase }) => {

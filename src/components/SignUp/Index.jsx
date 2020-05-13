@@ -3,12 +3,14 @@ import React, { Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserGraduate } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import Input from "../../componentHelpers/Input";
 import Button from "../../componentHelpers/Button";
 import { initPopupEvent } from "../../redux/modalPopup/action";
 
 function SignUp() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const clickLinkHandler = (evt) => {
     evt.preventDefault();
@@ -18,6 +20,11 @@ function SignUp() {
         "error"
       )
     );
+  };
+
+  const loginLinkHandler = (evt) => {
+    evt.preventDefault();
+    history.push("/");
   };
 
   return (
@@ -43,7 +50,7 @@ function SignUp() {
           className="auth__link"
           href="/"
           alt="register link"
-          onClick={clickLinkHandler}
+          onClick={loginLinkHandler}
         >
           Sign In
         </a>

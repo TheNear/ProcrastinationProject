@@ -7,7 +7,7 @@
 
 .common-input__label {
   position: absolute;
-  color: gray;
+  color: $second-font-color;
   font-size: 15px;
   top: 50%;
   left: 5px;
@@ -22,8 +22,8 @@
   margin: 5px 0;
   border: none;
   transition: border-bottom-color 0.5s ease, box-shadow 0.5s ease;
-  border-bottom: 2px solid gray;
-  box-shadow: 0 0 20px 0px gray;
+  border-bottom: 2px solid $second-font-color;
+  box-shadow: 0 0 20px 0px $second-font-color;
 }
 
 .common-input__input:focus {

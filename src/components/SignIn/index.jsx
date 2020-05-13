@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import Input from "../../componentHelpers/Input";
 import Button from "../../componentHelpers/Button";
 import { initPopupEvent } from "../../redux/modalPopup/action";
+import { signIn } from "../../redux/firebaseAuth/action";
 
 function SignIn() {
   const dispatch = useDispatch();
@@ -24,8 +25,8 @@ function SignIn() {
 
   const onFormSubmit = (evt) => {
     evt.preventDefault();
-    console.log('email ' + email, 'password ' + password);
-  }
+    dispatch(signIn({ email, password }));
+  };
 
   return (
     <>

@@ -12,6 +12,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import CONST from "../../assets/js/constants";
 import HamburgerButton from "../../componentHelpers/HamburgerButton";
+import { signOut } from "../../redux/firebaseAuth/action";
 
 const navigation = [
   {
@@ -84,14 +85,7 @@ export default function SidePanelMenu() {
   const dispatch = useDispatch();
   const onClickHandler = (evt) => {
     evt.preventDefault();
-    dispatch({
-      type: "PUSH_EVENT_POPUP",
-      payload: {
-        type: "error",
-        id: `${Date.now()}id`,
-        message: "testovoe soobshenie",
-      },
-    });
+    dispatch(signOut());
   };
 
   return (

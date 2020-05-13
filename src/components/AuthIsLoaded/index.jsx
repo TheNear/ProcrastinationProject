@@ -16,11 +16,10 @@ const AuthIsLoaded = ({ children }) => {
     );
   }
 
-  if (isLoaded(auth) && !isEmpty(auth)) {
-    return < AuthPage />
+  if (isLoaded(auth) && isEmpty(auth)) {
+    return <AuthPage />;
   }
-  
-  
+
   return [children];
 };
 

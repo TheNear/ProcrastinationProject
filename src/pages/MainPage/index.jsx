@@ -5,7 +5,7 @@ export default function MainPage() {
   return (
     <div className="main-wrapper">
       <SidePanel />
-      <main className="main" />
+      <div className="main-window" />
     </div>
   );
 }

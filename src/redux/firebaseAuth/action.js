@@ -26,15 +26,13 @@ export const signIn = ({ email, password }) => (
         })
       )
     )
-    .catch(
-      (error) =>
-        dispatch(
-          initPopupEvent({
-            type: "error",
-            message: errorList[error.code] || error.message,
-          })
-        )
-      // console.log(errorList[error.code] || error)
+    .catch((error) =>
+      dispatch(
+        initPopupEvent({
+          type: "error",
+          message: errorList[error.code] || error.message,
+        })
+      )
     );
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Input({ type, className, children }) {
+function Input({ type, className, children, onChange, value }) {
   return (
     <div className="common-input--wrap">
       <input
@@ -10,6 +10,8 @@ function Input({ type, className, children }) {
         name={className}
         id={className}
         required
+        value={value}
+        onChange={(evt) => onChange(evt.target.value)}
       />
       <label className={`common-input__label ${className}`} htmlFor={className}>
         {children}
@@ -22,10 +24,14 @@ Input.propTypes = {
   type: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
   children: PropTypes.string,
+  onChange: PropTypes.func,
+  value: PropTypes.string,
 };
 
 Input.defaultProps = {
   children: "",
+  onChange: () => {},
+  value: undefined,
 };
 
 export default Input;

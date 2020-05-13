@@ -1,14 +1,14 @@
 import React from "react";
 import "./App.scss";
 import { ReactReduxFirebaseProvider } from "react-redux-firebase";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createFirestoreInstance } from "redux-firestore";
 import { firebase, rrfConfig } from "./firebase";
 import store from "./redux/store";
-// import MainPage from "./pages/MainPage";
+import MainPage from "./pages/MainPage";
 import ModalPopupGroup from "./componentHelpers/ModalPopupGroup";
-import AuthPage from "./pages/AuthPage";
+// import AuthPage from "./pages/AuthPage";
 import AuthIsLoaded from "./components/AuthIsLoaded";
 
 const firebaseProps = {
@@ -23,11 +23,13 @@ export default function App() {
     <Router>
       <Provider store={store}>
         <ReactReduxFirebaseProvider {...firebaseProps}>
-          <AuthIsLoaded>
-            {/* <MainPage /> */}
-            <AuthPage />
-            <ModalPopupGroup />
-          </AuthIsLoaded>
+          <Switch>
+            <AuthIsLoaded>
+              <MainPage />
+              {/* <AuthPage /> */}
+            </AuthIsLoaded>
+          </Switch>
+          <ModalPopupGroup />
         </ReactReduxFirebaseProvider>
       </Provider>
     </Router>

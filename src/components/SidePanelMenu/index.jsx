@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTasks,
@@ -54,6 +54,11 @@ const navigation = [
 
 export default function SidePanelMenu() {
   const [menuActive, toggleMenu] = useState(false);
+  const dispatch = useDispatch();
+  const onClickHandler = (evt) => {
+    evt.preventDefault();
+    dispatch(signOut());
+  };
 
   const toggleMenuHandler = () => {
     toggleMenu(!menuActive);
@@ -82,11 +87,19 @@ export default function SidePanelMenu() {
     };
   }, [menuActive]);
 
-  const dispatch = useDispatch();
-  const onClickHandler = (evt) => {
-    evt.preventDefault();
-    dispatch(signOut());
-  };
+  const menuList = useMemo(() => {
+    return navigation.map((link) => (
+      <li key={`${link.id}key`} className="side-menu__item">
+        <div className="side-menu__icon">
+          <FontAwesomeIcon icon={link.icon} />
+        </div>
+        <NavLink exact to={link.to} className="side-menu__link">
+          {link.title}
+        </NavLink>
+      </li>
+    ));
+  }, []);
+
 
   return (
     <>
@@ -99,16 +112,7 @@ export default function SidePanelMenu() {
       />
       <nav className={`side-menu ${menuActive ? "active" : ""}`}>
         <ul className="side-menu__list">
-          {navigation.map((link) => (
-            <li key={`${link.id}key`} className="side-menu__item">
-              <div className="side-menu__icon">
-                <FontAwesomeIcon icon={link.icon} />
-              </div>
-              <NavLink exact to={link.to} className="side-menu__link">
-                {link.title}
-              </NavLink>
-            </li>
-          ))}
+          {menuList}
           <li className="side-menu__item side-menu__item-exit">
             <div className="side-menu__icon">
               <FontAwesomeIcon icon={faSignOutAlt} />

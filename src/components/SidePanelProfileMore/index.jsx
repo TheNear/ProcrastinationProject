@@ -1,21 +1,23 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import WithAnimation from "../../HOCs/WithAnimation";
 import { useSelector, useDispatch } from "react-redux";
+import WithAnimation from "../../HOCs/WithAnimation";
+import TextInput from "../../componentHelpers/TextInput";
 
 const SidePanelProfileMore = ({ changeRef, show }) => {
-  const state = useSelector(store => store.firebase.auth);
+  const state = useSelector((store) => store.firebase.auth);
+  const [someTest, someChange] = useState("Oleg Denisov");
   // const dispatch = useDispatch();
   const wrapRef = useRef(null);
 
   useEffect(() => {
-    // console.log(state);
     changeRef(wrapRef);
   }, [wrapRef, changeRef]);
 
   return (
     <div ref={wrapRef} className={`side-more ${show ? "active" : ""}`}>
-      <p>{state.displayName || "@YourName"}</p>
+      {/* <p>{state.displayName || "@YourName"}</p> */}
+      <TextInput value={someTest} changeValue={someChange} />
     </div>
   );
 };

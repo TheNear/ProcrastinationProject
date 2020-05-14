@@ -40,7 +40,3 @@ export const signOut = () => (dispatch, getState, { getFirebase }) => {
   const firebase = getFirebase();
   firebase.auth().signOut();
 };
-
-export const changeName = (name) => (dispatch, getState, { getFirebase }) => {
-
-};

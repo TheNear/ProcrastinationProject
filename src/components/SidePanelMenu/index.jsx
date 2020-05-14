@@ -100,7 +100,6 @@ export default function SidePanelMenu() {
     ));
   }, []);
 
-
   return (
     <>
       <HamburgerButton

@@ -1,3 +1,3 @@
-export const changeName = (name) => (dispatch, getState, { getFirebase }) => {
+// export const changeName = (name) => (dispatch, getState, { getFirebase }) => {
 
-};
+// };

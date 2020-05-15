@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./TextInput.scss";
 import CONST from "../../assets/js/constants";
 
-function TextInput({ value, changeValue }) {
+function TextInput({ value, changeValue, className }) {
   const [isEdit, editToggle] = useState(false);
   const [curValue, changeCurValue] = useState(value);
-  const inputRef = useRef(null);
+
   const successHandler = () => {
     changeValue(curValue);
     editToggle(false);
@@ -19,8 +19,6 @@ function TextInput({ value, changeValue }) {
 
   const inputKeyDownHandler = (evt) => {
     evt.stopPropagation();
-    evt.stopImmediatePropagation();
-
     switch (evt.keyCode) {
       case CONST.ENTER_CODE:
         successHandler();
@@ -33,23 +31,22 @@ function TextInput({ value, changeValue }) {
     }
   };
 
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.addEventListener("keydown", inputKeyDownHandler);
-    }
-  }, [isEdit]);
-
   return !isEdit ? (
-    <p onClick={() => editToggle(true)}>{value}</p>
+    <p
+      className={`input-text__text ${className}-text`}
+      onClick={() => editToggle(true)}
+    >
+      {value}
+    </p>
   ) : (
     <input
-      ref={inputRef}
       type="text"
-      name="text"
-      className="common-text-input"
+      name={className}
+      className={`input-text__input ${className}`}
       value={curValue}
       onChange={(evt) => changeCurValue(evt.target.value)}
-      id=""
+      onKeyDown={inputKeyDownHandler}
+      id={className}
       onBlur={successHandler}
       autoFocus
     />
@@ -59,6 +56,11 @@ function TextInput({ value, changeValue }) {
 TextInput.propTypes = {
   value: PropTypes.string.isRequired,
   changeValue: PropTypes.func.isRequired,
+  className: PropTypes.string,
+};
+
+TextInput.defaultProps = {
+  className: "",
 };
 
 export default TextInput;

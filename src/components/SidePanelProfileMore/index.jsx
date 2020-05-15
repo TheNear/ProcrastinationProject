@@ -17,7 +17,11 @@ const SidePanelProfileMore = ({ changeRef, show }) => {
   return (
     <div ref={wrapRef} className={`side-more ${show ? "active" : ""}`}>
       {/* <p>{state.displayName || "@YourName"}</p> */}
-      <TextInput value={someTest} changeValue={someChange} />
+      <TextInput
+        value={someTest}
+        changeValue={someChange}
+        className="side-more__username-input"
+      />
     </div>
   );
 };

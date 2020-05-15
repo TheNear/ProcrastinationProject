@@ -21,6 +21,8 @@ const SidePanelProfileMore = ({ changeRef, show }) => {
         value={someTest}
         changeValue={someChange}
         className="side-more__username-input"
+        max={20}
+        min={3}
       />
     </div>
   );

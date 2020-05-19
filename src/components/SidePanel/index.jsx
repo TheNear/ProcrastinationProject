@@ -13,14 +13,13 @@ export default function SideMenu() {
   };
 
   useEffect(() => {
-    // const onOutsideMenuClick = ({ target }) => {
-    //   console.log(target);
-    //   console.log(refMenu);
+    const onOutsideMenuClick = ({ target }) => {
+      if (!refMenu.current || refMenu.current.contains(target)) {
+        return;
+      }
 
-    //   if (refMenu.current && !refMenu.current.contains(target)) {
-    //     toggleUserMenu(false);
-    //   }
-    // };
+      toggleUserMenu(false);
+    };
 
     const onEscCloseMenu = ({ keyCode }) => {
       if (keyCode === CONST.ESC_CODE) {
@@ -29,12 +28,12 @@ export default function SideMenu() {
     };
 
     if (userMenu) {
-      // document.addEventListener("click", onOutsideMenuClick);
+      document.addEventListener("click", onOutsideMenuClick);
       document.addEventListener("keydown", onEscCloseMenu);
     }
 
     return () => {
-      // document.removeEventListener("click", onOutsideMenuClick);
+      document.removeEventListener("click", onOutsideMenuClick);
       document.removeEventListener("keydown", onEscCloseMenu);
     };
   }, [userMenu, refMenu]);

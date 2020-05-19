@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import maleimg from "../../assets/img/male.png";
 import TextInput from "../../componentHelpers/TextInput";
+import { changeUserNameDB } from "../../redux/userProfile/action";
 
 const SidePanelProfile = ({ isShowUserMenu, showUserMenuHandler }) => {
   const userProfile = useSelector((state) => state.userProfile);
+  const dispatch = useDispatch();
 
   const changeUserNameHandler = (user) => {
-    console.log(user);
-  }
+    dispatch(changeUserNameDB(user));
+  };
 
   return (
     <div className="side-profile">

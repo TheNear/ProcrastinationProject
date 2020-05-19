@@ -1,5 +1,5 @@
 import { initPopupEvent } from "../modalPopup/action";
-import { SET_USER } from "./types";
+import { SET_USER, CHANGE_USER_NAME } from "./types";
 
 const errorList = {
   "auth/invalid-email": "Некорректно введён E-mail адресс, попробуйте снова.",
@@ -74,7 +74,7 @@ export const signUp = ({ email, password, username }) => (
     });
 };
 
-export const setUser = (userProfile) => ({
+const setUser = (userProfile) => ({
   type: SET_USER,
   payload: userProfile,
 });
@@ -85,17 +85,50 @@ export const getUserProfile = () => (
   { getFirebase, getFirestore }
 ) => {
   const { currentUser } = getFirebase().auth();
-  const firestore = getFirestore();
+  const userProfile = getFirestore().collection("users").doc(currentUser.uid);
 
-  firestore
-    .collection("users")
-    .doc(currentUser.uid)
+  userProfile
     .get()
     .then((user) => {
       const userData = user.data();
       dispatch(setUser(userData));
     })
     .catch((error) => {
-      console.log(error);
+      dispatch(
+        initPopupEvent({
+          type: "error",
+          message: errorList[error.code] || error.message,
+        })
+      );
+    });
+};
+
+const changeUserName = (username) => ({
+  type: CHANGE_USER_NAME,
+  payload: username,
+});
+
+export const changeUserNameDB = (username) => (
+  dispatch,
+  getState,
+  { getFirebase, getFirestore }
+) => {
+  const { currentUser } = getFirebase().auth();
+  const userProfile = getFirestore().collection("users").doc(currentUser.uid);
+
+  userProfile
+    .update({
+      username,
+    })
+    .then(() => {
+      dispatch(changeUserName(username));
+    })
+    .catch((error) => {
+      dispatch(
+        initPopupEvent({
+          type: "error",
+          message: errorList[error.code] || error.message,
+        })
+      );
     });
 };

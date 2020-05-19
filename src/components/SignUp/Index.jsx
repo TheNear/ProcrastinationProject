@@ -16,7 +16,7 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
-  const [usernameValid, setUsernameValid] = useState(false);
+  const [usernameValid, setUsernameValid] = useState(true);
   const [emailValid, setEmailValid] = useState(true);
   const [passwordValid, setPasswordValid] = useState(true);
   const [passwordRepeatValid, setPasswordRepeatValid] = useState(true);
@@ -31,9 +31,18 @@ function SignUp() {
     );
   };
 
+  const checkValidation = () => {
+    if (password !== passwordRepeat) {
+      setPasswordValid(false);
+      setPasswordRepeatValid(false);
+    }
+  };
+
   const onFormSubmit = (evt) => {
     evt.preventDefault();
-    if (password === passwordRepeat) {
+    checkValidation();
+
+    if (usernameValid && emailValid && passwordValid && passwordRepeatValid) {
       dispatch(
         signUp({
           username,
@@ -41,9 +50,9 @@ function SignUp() {
           password,
         })
       );
-      setPassword("");
-      setPasswordRepeat("");
     }
+    setPassword("");
+    setPasswordRepeat("");
   };
 
   const loginLinkHandler = (evt) => {

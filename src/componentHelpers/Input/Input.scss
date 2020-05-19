@@ -26,6 +26,13 @@
   box-shadow: 0 0 20px 0px $second-font-color;
 }
 
+.common-input__input.invalid {
+  border-color: $bad-color;
+  box-shadow: 0 0 20px 0px $bad-color;
+}
+
+
+
 .common-input__input:focus {
   outline: none;
 }
@@ -36,6 +43,10 @@
   color: $eton-blue;
   font-size: 10px;
   top: -5px;
+}
+
+.common-input__input.invalid:valid ~ .common-input__label {
+  color: $bad-color;
 }
 
 .common-input__input:focus {

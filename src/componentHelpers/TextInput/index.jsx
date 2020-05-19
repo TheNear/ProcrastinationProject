@@ -76,7 +76,7 @@ function TextInput({ value, changeValue, className, max, min }) {
 }
 
 TextInput.propTypes = {
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   changeValue: PropTypes.func.isRequired,
   className: PropTypes.string,
   min: PropTypes.number,
@@ -84,6 +84,7 @@ TextInput.propTypes = {
 };
 
 TextInput.defaultProps = {
+  value: "",
   className: "",
   min: 3,
   max: 20,

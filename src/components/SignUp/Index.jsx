@@ -16,6 +16,10 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
+  const [usernameValid, setUsernameValid] = useState(false);
+  const [emailValid, setEmailValid] = useState(true);
+  const [passwordValid, setPasswordValid] = useState(true);
+  const [passwordRepeatValid, setPasswordRepeatValid] = useState(true);
 
   const clickLinkHandler = (evt) => {
     evt.preventDefault();
@@ -37,6 +41,8 @@ function SignUp() {
           password,
         })
       );
+      setPassword("");
+      setPasswordRepeat("");
     }
   };
 
@@ -50,6 +56,8 @@ function SignUp() {
       <FontAwesomeIcon icon={faUserGraduate} className="auth__icon" size="7x" />
       <form onSubmit={onFormSubmit} className="auth__form" action="post">
         <Input
+          valid={usernameValid}
+          changeValid={setUsernameValid}
           value={username}
           onChange={setUsername}
           className="auth__username"
@@ -58,6 +66,8 @@ function SignUp() {
           Username
         </Input>
         <Input
+          changeValid={setEmailValid}
+          valid={emailValid}
           value={email}
           onChange={setEmail}
           className="auth__email"
@@ -66,6 +76,8 @@ function SignUp() {
           E-mail
         </Input>
         <Input
+          changeValid={setPasswordValid}
+          valid={passwordValid}
           value={password}
           onChange={setPassword}
           className="auth__password"
@@ -74,6 +86,8 @@ function SignUp() {
           Password
         </Input>
         <Input
+          changeValid={setPasswordRepeatValid}
+          valid={passwordRepeatValid}
           value={passwordRepeat}
           onChange={setPasswordRepeat}
           className="auth__password-repeat"

@@ -1,11 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Input({ type, className, children, onChange, value }) {
+function Input({
+  type,
+  className,
+  children,
+  onChange,
+  value,
+  valid,
+  changeValid,
+}) {
   return (
     <div className="common-input--wrap">
       <input
-        className={`common-input__input ${className}`}
+        onFocus={() => changeValid(true)}
+        className={`common-input__input ${className} ${valid ? "" : "invalid"}`}
         type={type === "email" ? "text" : type}
         autoComplete={type === "password" ? "new-password" : type}
         name={className}
@@ -22,6 +31,8 @@ function Input({ type, className, children, onChange, value }) {
 }
 
 Input.propTypes = {
+  valid: PropTypes.bool,
+  changeValid: PropTypes.func,
   type: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
   children: PropTypes.string,
@@ -30,6 +41,8 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
+  valid: true,
+  changeValid: () => {},
   children: "",
   onChange: () => {},
   value: undefined,

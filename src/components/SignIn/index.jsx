@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import Input from "../../componentHelpers/Input";
 import Button from "../../componentHelpers/Button";
 import { initPopupEvent } from "../../redux/modalPopup/action";
-import { signIn } from "../../redux/firebaseAuth/action";
+import { signIn } from "../../redux/userProfile/action";
 
 function SignIn() {
   const dispatch = useDispatch();
@@ -46,7 +46,7 @@ function SignIn() {
           className="auth__email"
           type="email"
         >
-          Username
+          E-mail
         </Input>
         <Input
           onChange={setPassword}

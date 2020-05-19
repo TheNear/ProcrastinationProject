@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import ModalPopup from "../ModalPopup";
 
 const ModalPopupGroup = () => {
-  const modal = useSelector((state) => state.modalPopupReducer);
+  const modal = useSelector((state) => state.modalPopup);
 
   return (
     <div className="modal-popup__group">

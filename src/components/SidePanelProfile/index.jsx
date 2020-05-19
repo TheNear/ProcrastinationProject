@@ -2,9 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
 import maleimg from "../../assets/img/male.png";
 
 const SidePanelProfile = ({ isShowUserMenu, showUserMenuHandler }) => {
+  const userProfile = useSelector((state) => state.userProfile);
+
   return (
     <div className="side-profile">
       <div className="side-profile__photo-wrap">
@@ -27,7 +30,7 @@ const SidePanelProfile = ({ isShowUserMenu, showUserMenuHandler }) => {
         </button>
       </div>
       <div className="side-profile__info">
-        <p className="side-profile__name">@Andrey Bytilkin</p>
+        <p className="side-profile__name">@{userProfile.username}</p>
         <p className="side-profile__points">
           <span className="side-profile__points-color">14.582</span> caps
         </p>

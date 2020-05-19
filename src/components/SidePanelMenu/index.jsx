@@ -12,7 +12,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import CONST from "../../assets/js/constants";
 import HamburgerButton from "../../componentHelpers/HamburgerButton";
-import { signOut } from "../../redux/firebaseAuth/action";
+import { signOut } from "../../redux/userProfile/action";
 
 const navigation = [
   {

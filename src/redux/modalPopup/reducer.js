@@ -2,7 +2,7 @@ import { PUSH_EVENT_POPUP, DELETE_EVENT_POPUP } from "./types";
 
 const initialState = [];
 
-const modalPopupReducer = (state = initialState, action) => {
+const modalPopup = (state = initialState, action) => {
   switch (action.type) {
     case PUSH_EVENT_POPUP:
       return state.concat(action.payload);
@@ -13,4 +13,4 @@ const modalPopupReducer = (state = initialState, action) => {
   }
 };
 
-export default modalPopupReducer;
+export default modalPopup;

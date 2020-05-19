@@ -1,14 +1,21 @@
 import React, { useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-// import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import WithAnimation from "../../HOCs/WithAnimation";
 import TextInput from "../../componentHelpers/TextInput";
 
 const SidePanelProfileMore = ({ changeRef, show }) => {
-  // const state = useSelector((store) => store.firebase.auth);
-  const [someTest, someChange] = useState("Oleg Denisov");
-  // const dispatch = useDispatch();
+  const profile = useSelector((store) => store.firebase.auth);
+  const [userName, changeUserName] = useState(profile.displayName);
+  const dispatch = useDispatch();
   const wrapRef = useRef(null);
+
+  useEffect(() => {
+    if (profile.displayName !== userName) {
+      console.log("CHANGED");
+      // dispatch(changeName(userName));
+    }
+  }, [userName, profile.displayName]);
 
   useEffect(() => {
     changeRef(wrapRef);
@@ -18,8 +25,8 @@ const SidePanelProfileMore = ({ changeRef, show }) => {
     <div ref={wrapRef} className={`side-more ${show ? "active" : ""}`}>
       {/* <p>{state.displayName || "@YourName"}</p> */}
       <TextInput
-        value={someTest}
-        changeValue={someChange}
+        value={userName || "Anonymous"}
+        changeValue={changeUserName}
         className="side-more__username-input"
         max={20}
         min={3}

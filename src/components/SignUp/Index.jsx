@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserGraduate } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
@@ -7,10 +7,15 @@ import { useHistory } from "react-router-dom";
 import Input from "../../componentHelpers/Input";
 import Button from "../../componentHelpers/Button";
 import { initPopupEvent } from "../../redux/modalPopup/action";
+import { signUp } from "../../redux/userProfile/action";
 
 function SignUp() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordRepeat, setPasswordRepeat] = useState("");
 
   const clickLinkHandler = (evt) => {
     evt.preventDefault();
@@ -22,6 +27,19 @@ function SignUp() {
     );
   };
 
+  const onFormSubmit = (evt) => {
+    evt.preventDefault();
+    if (password === passwordRepeat) {
+      dispatch(
+        signUp({
+          username,
+          email,
+          password,
+        })
+      );
+    }
+  };
+
   const loginLinkHandler = (evt) => {
     evt.preventDefault();
     history.push("/");
@@ -30,14 +48,37 @@ function SignUp() {
   return (
     <>
       <FontAwesomeIcon icon={faUserGraduate} className="auth__icon" size="7x" />
-      <form onSubmit={clickLinkHandler} className="auth__form" action="post">
-        <Input className="auth__email" type="text">
+      <form onSubmit={onFormSubmit} className="auth__form" action="post">
+        <Input
+          value={username}
+          onChange={setUsername}
+          className="auth__username"
+          type="text"
+        >
           Username
         </Input>
-        <Input className="auth__password" type="password">
+        <Input
+          value={email}
+          onChange={setEmail}
+          className="auth__email"
+          type="email"
+        >
+          E-mail
+        </Input>
+        <Input
+          value={password}
+          onChange={setPassword}
+          className="auth__password"
+          type="password"
+        >
           Password
         </Input>
-        <Input className="auth__password-repeat" type="password">
+        <Input
+          value={passwordRepeat}
+          onChange={setPasswordRepeat}
+          className="auth__password-repeat"
+          type="password"
+        >
           Password Repeat
         </Input>
         <Button type="submit" className="auth__submit-btn">

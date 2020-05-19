@@ -3,10 +3,12 @@ import { combineReducers } from "redux";
 import { firebaseReducer } from "react-redux-firebase";
 import { firestoreReducer } from "redux-firestore";
 
-import modalPopupReducer from "./modalPopup/reducer";
+import modalPopup from "./modalPopup/reducer";
+import userProfile from "./userProfile/reducer";
 
 export default combineReducers({
-  modalPopupReducer,
+  userProfile,
+  modalPopup,
   firestore: firestoreReducer,
   firebase: firebaseReducer,
 });

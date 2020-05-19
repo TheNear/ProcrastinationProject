@@ -6,7 +6,7 @@ function Input({ type, className, children, onChange, value }) {
     <div className="common-input--wrap">
       <input
         className={`common-input__input ${className}`}
-        type={type}
+        type={type === "email" ? "text" : type}
         autoComplete={type === "password" ? "new-password" : type}
         name={className}
         id={className}

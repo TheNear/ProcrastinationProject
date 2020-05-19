@@ -75,7 +75,13 @@
   color: $normal-color;
 }
 
+.side-profile__name {
+  text-align: center;
+}
 
+.side-profile__name-text {
+  cursor: pointer;
+}
 
 @media only screen and (max-width: $sc-big-medium) {
   .side-profile  {

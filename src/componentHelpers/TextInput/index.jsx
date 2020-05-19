@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./TextInput.scss";
 import CONST from "../../assets/js/constants";
@@ -6,6 +6,10 @@ import CONST from "../../assets/js/constants";
 function TextInput({ value, changeValue, className, max, min }) {
   const [isEdit, editToggle] = useState(false);
   const [curValue, changeCurValue] = useState(value);
+
+  useEffect(() => {
+    changeCurValue(value);
+  }, [value]);
 
   const successHandler = () => {
     changeValue(curValue);

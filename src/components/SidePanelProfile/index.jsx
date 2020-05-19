@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
 import maleimg from "../../assets/img/male.png";
+import TextInput from "../../componentHelpers/TextInput";
 
 const SidePanelProfile = ({ isShowUserMenu, showUserMenuHandler }) => {
   const userProfile = useSelector((state) => state.userProfile);
+
+  const changeUserNameHandler = (user) => {
+    console.log(user);
+  }
 
   return (
     <div className="side-profile">
@@ -30,7 +35,15 @@ const SidePanelProfile = ({ isShowUserMenu, showUserMenuHandler }) => {
         </button>
       </div>
       <div className="side-profile__info">
-        <p className="side-profile__name">@{userProfile.username}</p>
+        {/* <p className="side-profile__name">@{userProfile.username}</p>
+         */}
+        <TextInput
+          value={userProfile.username}
+          changeValue={changeUserNameHandler}
+          className="side-profile__name"
+          max={20}
+          min={3}
+        />
         <p className="side-profile__points">
           <span className="side-profile__points-color">{userProfile.caps}</span>{" "}
           caps

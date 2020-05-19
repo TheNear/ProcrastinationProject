@@ -32,10 +32,14 @@ const SidePanelProfile = ({ isShowUserMenu, showUserMenuHandler }) => {
       <div className="side-profile__info">
         <p className="side-profile__name">@{userProfile.username}</p>
         <p className="side-profile__points">
-          <span className="side-profile__points-color">14.582</span> caps
+          <span className="side-profile__points-color">{userProfile.caps}</span>{" "}
+          caps
         </p>
         <p className="side-profile__points">
-          <span className="side-profile__days-color">17</span> days in row
+          <span className="side-profile__days-color">
+            {userProfile.daysinrow}
+          </span>{" "}
+          days in row
         </p>
       </div>
     </div>

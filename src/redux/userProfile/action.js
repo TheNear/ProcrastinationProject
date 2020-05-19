@@ -60,6 +60,8 @@ export const signUp = ({ email, password, username }) => (
         email: user.email,
         uid: user.uid,
         username,
+        caps: 0,
+        daysinrow: 0,
       });
     })
     .catch((error) => {

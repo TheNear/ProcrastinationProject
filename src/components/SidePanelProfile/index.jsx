@@ -8,7 +8,7 @@ import TextInput from "../../componentHelpers/TextInput";
 import { changeUserNameDB } from "../../redux/userProfile/action";
 
 const SidePanelProfile = ({ isShowUserMenu, showUserMenuHandler }) => {
-  const userProfile = useSelector((state) => state.userProfile);
+  const userProfile = useSelector((state) => state.firebase.profile);
   const dispatch = useDispatch();
 
   const changeUserNameHandler = (user) => {
@@ -37,8 +37,6 @@ const SidePanelProfile = ({ isShowUserMenu, showUserMenuHandler }) => {
         </button>
       </div>
       <div className="side-profile__info">
-        {/* <p className="side-profile__name">@{userProfile.username}</p>
-         */}
         <TextInput
           value={userProfile.username}
           changeValue={changeUserNameHandler}

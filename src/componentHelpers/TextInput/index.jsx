@@ -53,10 +53,10 @@ function TextInput({ value, changeValue, className, max, min }) {
 
   return !isEdit ? (
     <p
-      className={`input-text__text ${className}-text`}
+      className={`input-text__text ${className} ${className}-text`}
       onClick={enterToEditMode}
     >
-      {value}
+      {curValue}
     </p>
   ) : (
     <input
@@ -64,7 +64,7 @@ function TextInput({ value, changeValue, className, max, min }) {
       minLength={min}
       type="text"
       name={className}
-      className={`input-text__input ${className}`}
+      className={`input-text__input ${className} ${className}-input`}
       value={curValue}
       onChange={onChangeHandler}
       onKeyDown={inputKeyDownHandler}

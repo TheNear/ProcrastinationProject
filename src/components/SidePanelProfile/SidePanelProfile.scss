@@ -75,12 +75,14 @@
   color: $normal-color;
 }
 
-.side-profile__name {
+.side-profile__name-input {
   text-align: center;
+  margin-bottom: 12px;
 }
 
 .side-profile__name-text {
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
 @media only screen and (max-width: $sc-big-medium) {
@@ -118,6 +120,11 @@
   .side-profile__name {
     font-size: 12px;
     font-weight: bold;
+  }
+
+  .side-profile__name-input {
+    font-size: 12px;
+    margin-bottom: 11px;
   }
 
   .side-profile__points {

@@ -8,18 +8,34 @@ import Input from "../../componentHelpers/Input";
 import Button from "../../componentHelpers/Button";
 import { initPopupEvent } from "../../redux/modalPopup/action";
 import { signUp } from "../../redux/userProfile/action";
+import useForm from "../../hooks/useForm";
 
-function SignUp() {
+const inputs = [
+  {
+    text: "Username",
+    class: "auth__username",
+    type: "text",
+  },
+  {
+    text: "E-mail",
+    class: "auth__email",
+    type: "email",
+  },
+  {
+    text: "Password",
+    class: "auth__password",
+    type: "password",
+  },
+  {
+    text: "Password repeat",
+    class: "auth__password-repeat",
+    type: "password",
+  },
+];
+
+const SignUp = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordRepeat, setPasswordRepeat] = useState("");
-  const [usernameValid, setUsernameValid] = useState(true);
-  const [emailValid, setEmailValid] = useState(true);
-  const [passwordValid, setPasswordValid] = useState(true);
-  const [passwordRepeatValid, setPasswordRepeatValid] = useState(true);
 
   const clickLinkHandler = (evt) => {
     evt.preventDefault();
@@ -31,29 +47,33 @@ function SignUp() {
     );
   };
 
-  const checkValidation = () => {
-    if (password !== passwordRepeat) {
-      setPasswordValid(false);
-      setPasswordRepeatValid(false);
-    }
+  // const onFormSubmit = (evt) => {
+  //   evt.preventDefault();
+  //   checkValidation();
+
+  //   if (usernameValid && emailValid && passwordValid && passwordRepeatValid) {
+  //     dispatch(
+  //       signUp({
+  //         username,
+  //         email,
+  //         password,
+  //       })
+  //     );
+  //   }
+  //   setPassword("");
+  //   setPasswordRepeat("");
+  // };
+
+  const onFormSubmit = () => {
+    console.log("SUBMIT");
   };
 
-  const onFormSubmit = (evt) => {
-    evt.preventDefault();
-    checkValidation();
+  const someFunc = () => {};
 
-    if (usernameValid && emailValid && passwordValid && passwordRepeatValid) {
-      dispatch(
-        signUp({
-          username,
-          email,
-          password,
-        })
-      );
-    }
-    setPassword("");
-    setPasswordRepeat("");
-  };
+  const { values, errors, handleChange, handleSumbit } = useForm(
+    onFormSubmit,
+    someFunc
+  );
 
   const loginLinkHandler = (evt) => {
     evt.preventDefault();
@@ -63,53 +83,25 @@ function SignUp() {
   return (
     <>
       <FontAwesomeIcon icon={faUserGraduate} className="auth__icon" size="7x" />
-      <form onSubmit={onFormSubmit} className="auth__form" action="post">
-        <Input
-          valid={usernameValid}
-          changeValid={setUsernameValid}
-          value={username}
-          onChange={setUsername}
-          className="auth__username"
-          type="text"
-        >
-          Username
-        </Input>
-        <Input
-          changeValid={setEmailValid}
-          valid={emailValid}
-          value={email}
-          onChange={setEmail}
-          className="auth__email"
-          type="email"
-        >
-          E-mail
-        </Input>
-        <Input
-          changeValid={setPasswordValid}
-          valid={passwordValid}
-          value={password}
-          onChange={setPassword}
-          className="auth__password"
-          type="password"
-        >
-          Password
-        </Input>
-        <Input
-          changeValid={setPasswordRepeatValid}
-          valid={passwordRepeatValid}
-          value={passwordRepeat}
-          onChange={setPasswordRepeat}
-          className="auth__password-repeat"
-          type="password"
-        >
-          Password Repeat
-        </Input>
+      <form onSubmit={handleSumbit} className="auth__form" action="post">
+        {inputs.map((input) => (
+          <Input
+            key={input.text + input.class}
+            valid={errors || ""}
+            value={values[input.class] || ""}
+            onChange={handleChange}
+            className={input.class}
+            type={input.type}
+          >
+            {input.text}
+          </Input>
+        ))}
         <Button type="submit" className="auth__submit-btn">
           Register
         </Button>
       </form>
       <p className="auth__text">
-        Already have account?{" "}
+        Already have account?&nbsp;
         <a
           className="auth__link"
           href="/"
@@ -129,6 +121,6 @@ function SignUp() {
       </a>
     </>
   );
-}
+};
 
 export default SignUp;

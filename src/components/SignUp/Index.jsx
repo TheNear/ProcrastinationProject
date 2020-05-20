@@ -9,6 +9,7 @@ import Button from "../../componentHelpers/Button";
 import { initPopupEvent } from "../../redux/modalPopup/action";
 import { signUp } from "../../redux/userProfile/action";
 import useForm from "../../hooks/useForm";
+import { regFormValid } from "../../assets/js/validation";
 
 const inputs = [
   {
@@ -37,6 +38,21 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const onFormSubmit = (email, password, username) => {
+    dispatch(
+      signUp({
+        email,
+        password,
+        username,
+      })
+    );
+  };
+
+  const { values, errors, handleChange, handleSumbit } = useForm(
+    onFormSubmit,
+    regFormValid
+  );
+
   const clickLinkHandler = (evt) => {
     evt.preventDefault();
     dispatch(
@@ -46,34 +62,6 @@ const SignUp = () => {
       )
     );
   };
-
-  // const onFormSubmit = (evt) => {
-  //   evt.preventDefault();
-  //   checkValidation();
-
-  //   if (usernameValid && emailValid && passwordValid && passwordRepeatValid) {
-  //     dispatch(
-  //       signUp({
-  //         username,
-  //         email,
-  //         password,
-  //       })
-  //     );
-  //   }
-  //   setPassword("");
-  //   setPasswordRepeat("");
-  // };
-
-  const onFormSubmit = () => {
-    console.log("SUBMIT");
-  };
-
-  const someFunc = () => {};
-
-  const { values, errors, handleChange, handleSumbit } = useForm(
-    onFormSubmit,
-    someFunc
-  );
 
   const loginLinkHandler = (evt) => {
     evt.preventDefault();
@@ -96,7 +84,7 @@ const SignUp = () => {
             {input.text}
           </Input>
         ))}
-        <Button type="submit" className="auth__submit-btn">
+        <Button type="submit" className="auth__submit-btn" value="Register">
           Register
         </Button>
       </form>

@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React, { Fragment, useState, useEffect, useCallback } from "react";
+import React, { Fragment, useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserGraduate } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
@@ -42,25 +42,23 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const onFormSubmit = useCallback((username) => {
-    // dispatch(
-    //   signUp({
-    //     email,
-    //     password,
-    //     username,
-    //   })
-    // );
-    console.log(username);
-  }, []);
+  const onFormSubmit = useCallback(
+    (username) => {
+      dispatch(
+        signUp({
+          email: username.email,
+          password: username.password,
+          username: username.username,
+        })
+      );
+    },
+    [dispatch]
+  );
 
-  const { values, errors, handleChange, handleSumbit } = useForm(
+  const { values, errors, handleChange, handleSumbit, resetErrors } = useForm(
     onFormSubmit,
     regFormValid
   );
-
-  useEffect(() => {
-    console.log(errors);
-  }, [errors]);
 
   const clickLinkHandler = (evt) => {
     evt.preventDefault();
@@ -85,7 +83,8 @@ const SignUp = () => {
           <Input
             key={input.text + input.class}
             name={input.name}
-            valid={errors || ""}
+            resetValid={resetErrors}
+            errors={errors[input.name] || ""}
             value={values[input.name] || ""}
             onChange={handleChange}
             className={input.class}

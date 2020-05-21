@@ -10,13 +10,17 @@ const useForm = (callback, validate) => {
       callback(values);
       setIsSubmitting(false);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [errors, isSubmitting, callback]);
 
   const handleSumbit = (evt) => {
     evt.preventDefault();
     setErrors(validate(values));
     setIsSubmitting(true);
+  };
+
+  const resetErrors = () => {
+    setErrors({});
   };
 
   const handleChange = (evt) => {
@@ -32,6 +36,7 @@ const useForm = (callback, validate) => {
     errors,
     handleChange,
     handleSumbit,
+    resetErrors,
   };
 };
 

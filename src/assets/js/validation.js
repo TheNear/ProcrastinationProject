@@ -7,11 +7,12 @@ const MIN_PASSWORD_LENGTH = 6;
 export const regFormValid = (values) => {
   const errors = {};
 
-  if (
-    values.username.length < MIN_NAME_LENGTH ||
-    values.username.length > MAX_NAME_LENGTH
-  ) {
-    errors.username = `Вы ввели слишком короткое, или слишком длинное имя. Минимум ${MIN_NAME_LENGTH} символа, максимум ${MAX_NAME_LENGTH} символов`;
+  if (values.username.length < MIN_NAME_LENGTH) {
+    errors.username = `Слишком короткое имя`;
+  }
+
+  if (values.username.length > MAX_NAME_LENGTH) {
+    errors.username = "Слишком длинное имя";
   }
 
   if (!emailRegExp.test(values.email)) {
@@ -19,11 +20,12 @@ export const regFormValid = (values) => {
   }
 
   if (values.password.length < MIN_PASSWORD_LENGTH) {
-    errors.password = `Слишком короткий пароль. Минимальная длинна ${MIN_PASSWORD_LENGTH}`;
+    errors.password = `Слишком короткий пароль`;
   }
 
   if (values.password !== values.password_repeat) {
     errors.password = `Пароли не совпадают`;
+    errors.password_repeat = `Пароли не совпадают`;
   }
 
   return errors;

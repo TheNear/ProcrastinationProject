@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Input = ({ type, className, children, onChange, value, valid }) => {
+const Input = ({ type, className, children, onChange, value, valid, name }) => {
   return (
     <div className="common-input--wrap">
       <input
@@ -9,7 +9,7 @@ const Input = ({ type, className, children, onChange, value, valid }) => {
         className={`common-input__input ${className} ${valid ? "" : "invalid"}`}
         type={type === "email" ? "text" : type}
         autoComplete={type === "password" ? "new-password" : type}
-        name={className}
+        name={name || className}
         id={className}
         required
         value={value}
@@ -23,6 +23,7 @@ const Input = ({ type, className, children, onChange, value, valid }) => {
 };
 
 Input.propTypes = {
+  name: PropTypes.string,
   valid: PropTypes.any,
   type: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
@@ -32,6 +33,7 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
+  name: "",
   valid: {},
   children: "",
   onChange: () => {},

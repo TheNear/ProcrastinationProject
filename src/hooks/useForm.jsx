@@ -7,13 +7,15 @@ const useForm = (callback, validate) => {
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
-      callback();
+      callback(values);
+      setIsSubmitting(false);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [errors, isSubmitting, callback]);
 
   const handleSumbit = (evt) => {
     evt.preventDefault();
-    // setErrors(validate(values));
+    setErrors(validate(values));
     setIsSubmitting(true);
   };
 

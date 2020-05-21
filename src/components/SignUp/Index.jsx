@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect, useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserGraduate } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
@@ -13,21 +13,25 @@ import { regFormValid } from "../../assets/js/validation";
 
 const inputs = [
   {
+    name: "username",
     text: "Username",
     class: "auth__username",
     type: "text",
   },
   {
+    name: "email",
     text: "E-mail",
     class: "auth__email",
     type: "email",
   },
   {
+    name: "password",
     text: "Password",
     class: "auth__password",
     type: "password",
   },
   {
+    name: "password_repeat",
     text: "Password repeat",
     class: "auth__password-repeat",
     type: "password",
@@ -38,20 +42,25 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const onFormSubmit = (email, password, username) => {
-    dispatch(
-      signUp({
-        email,
-        password,
-        username,
-      })
-    );
-  };
+  const onFormSubmit = useCallback((username) => {
+    // dispatch(
+    //   signUp({
+    //     email,
+    //     password,
+    //     username,
+    //   })
+    // );
+    console.log(username);
+  }, []);
 
   const { values, errors, handleChange, handleSumbit } = useForm(
     onFormSubmit,
     regFormValid
   );
+
+  useEffect(() => {
+    console.log(errors);
+  }, [errors]);
 
   const clickLinkHandler = (evt) => {
     evt.preventDefault();
@@ -75,8 +84,9 @@ const SignUp = () => {
         {inputs.map((input) => (
           <Input
             key={input.text + input.class}
+            name={input.name}
             valid={errors || ""}
-            value={values[input.class] || ""}
+            value={values[input.name] || ""}
             onChange={handleChange}
             className={input.class}
             type={input.type}

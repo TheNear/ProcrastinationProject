@@ -10,6 +10,15 @@ const useForm = (callback, validate) => {
       callback(values);
       setIsSubmitting(false);
     }
+
+    Object.keys(values).forEach((input) => {
+      if (input.includes("password")) {
+        setValues((value) => ({
+          ...value,
+          [input]: "",
+        }));
+      }
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [errors, isSubmitting, callback]);
 
@@ -18,15 +27,6 @@ const useForm = (callback, validate) => {
 
     setErrors(validate(values));
     setIsSubmitting(true);
-
-    // Object.keys(values).forEach((input) => {
-    //   if (input.includes("password")) {
-    //     setValues((value) => ({
-    //       ...value,
-    //       [input]: "",
-    //     }));
-    //   }
-    // });
   };
 
   const resetErrors = () => {

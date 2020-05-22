@@ -56,3 +56,9 @@
   border-bottom-color: $eton-blue;
   box-shadow: 0 0 20px 0px $eton-blue;
 }
+
+.common-input__input.invalid:focus {
+  border-color: $bad-color;
+  box-shadow: 0 0 20px 0px $bad-color;
+}
+

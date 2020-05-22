@@ -21,6 +21,7 @@ export const regFormValid = (values) => {
 
   if (values.password.length < MIN_PASSWORD_LENGTH) {
     errors.password = `Слишком короткий пароль`;
+    errors.password_repeat = `Слишком короткий пароль`;
   }
 
   if (values.password !== values.password_repeat) {

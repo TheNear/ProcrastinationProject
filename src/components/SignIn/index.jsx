@@ -8,6 +8,22 @@ import Input from "../../componentHelpers/Input";
 import Button from "../../componentHelpers/Button";
 import { initPopupEvent } from "../../redux/modalPopup/action";
 import { signIn } from "../../redux/userProfile/action";
+import useForm from "../../hooks/useForm";
+
+const inputs = [
+  {
+    name: "email",
+    text: "E-mail",
+    class: "auth__email",
+    type: "email",
+  },
+  {
+    name: "password",
+    text: "Password",
+    class: "auth__password",
+    type: "password",
+  }
+];
 
 function SignIn() {
   const dispatch = useDispatch();

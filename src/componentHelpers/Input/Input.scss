@@ -46,8 +46,10 @@
   top: -5px;
 }
 
-.common-input__input.invalid:valid ~ .common-input__label {
+.common-input__input.invalid ~ .common-input__label {
   color: $bad-color;
+  font-size: 10px;
+  top: -5px;
 }
 
 .common-input__input:focus {

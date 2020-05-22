@@ -15,6 +15,16 @@ const useForm = (callback, validate) => {
 
   const handleSumbit = (evt) => {
     evt.preventDefault();
+
+    Object.keys(values).forEach(item => {
+      if (item.includes("password")) {
+        setValues((value) => ({
+          ...value,
+          [item]: "",
+        }));
+      }
+    });
+
     setErrors(validate(values));
     setIsSubmitting(true);
   };

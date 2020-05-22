@@ -57,3 +57,13 @@
   color: $eton-blue;
   text-decoration: underline;
 }
+
+@media only screen and (max-height: 550px) {
+  .auth-container {
+    padding: 20px 40px;
+  }
+  
+  .auth__icon {
+    margin-bottom: 5px;
+  }
+};

@@ -20,6 +20,7 @@ const useForm = (callback, validate) => {
   };
 
   const resetErrors = () => {
+    setIsSubmitting(false);
     setErrors({});
   };
 

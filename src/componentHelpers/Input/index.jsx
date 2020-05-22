@@ -11,8 +11,6 @@ const Input = ({
   name,
   resetValid,
 }) => {
-  console.log(value);
-
   return (
     <div className="common-input--wrap">
       <input
@@ -55,4 +53,8 @@ Input.defaultProps = {
   value: undefined,
 };
 
-export default Input;
+export default React.memo(Input, (prevProp, nextProp) => {
+  return (
+    prevProp.value === nextProp.value && prevProp.errors === nextProp.errors
+  );
+});

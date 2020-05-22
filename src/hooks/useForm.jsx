@@ -21,7 +21,7 @@ const useForm = (callback, validate) => {
     });
     // Отлючено из-за требования values хуком, который постоянно меняется.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [errors, isSubmitting, callback]);
+  }, [errors, isSubmitting]);
 
   const handleSumbit = (evt) => {
     evt.preventDefault();

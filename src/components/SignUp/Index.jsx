@@ -2,14 +2,13 @@
 import React, { Fragment, useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserGraduate } from "@fortawesome/free-solid-svg-icons";
-import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Input from "../../componentHelpers/Input";
 import Button from "../../componentHelpers/Button";
-import { initPopupEvent } from "../../redux/modalPopup/action";
 // import { signUp } from "../../redux/userProfile/action";
 import useForm from "../../hooks/useForm";
 import { regFormValid } from "../../assets/js/validation";
+import useModal from "../../hooks/useModal";
 
 const inputs = [
   {
@@ -39,8 +38,8 @@ const inputs = [
 ];
 
 const SignUp = () => {
-  const dispatch = useDispatch();
   const history = useHistory();
+  const { showError } = useModal();
 
   const onFormSubmit = useCallback(
     // (username) => {
@@ -53,16 +52,12 @@ const SignUp = () => {
     //   );
     // },
     () => {
-      dispatch(
-        initPopupEvent({
-          message:
-            "Данная функция отключена или пока не реализована. Для входа и тестирования приложения используйте testuser@gmail.com и пароль 123456",
-          type: "error",
-          duration: 10000,
-        })
+      showError(
+        "Данная функция отключена или пока не реализована. Для входа и тестирования приложения используйте testuser@gmail.com и пароль 123456",
+        10000
       );
     },
-    [dispatch]
+    []
   );
 
   const { values, errors, handleChange, handleSumbit, resetErrors } = useForm(
@@ -72,12 +67,7 @@ const SignUp = () => {
 
   const clickLinkHandler = (evt) => {
     evt.preventDefault();
-    dispatch(
-      initPopupEvent({
-        message: "Данная функция отключена или пока не реализована.",
-        type: "error",
-      })
-    );
+    showError();
   };
 
   const loginLinkHandler = (evt) => {

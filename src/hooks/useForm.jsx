@@ -1,38 +1,31 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const useForm = (callback, validate) => {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSubmitting) {
-      callback(values);
-      setIsSubmitting(false);
-    }
-
-    Object.keys(values).forEach((input) => {
-      if (input.includes("password")) {
-        setValues((value) => ({
-          ...value,
-          [input]: "",
-        }));
-      }
-    });
-    // Отлючено из-за требования values хуком, который постоянно меняется.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [errors, isSubmitting]);
 
   const handleSumbit = (evt) => {
     evt.preventDefault();
 
-    setErrors(validate(values));
-    setIsSubmitting(true);
+    const errorsValid = validate(values);
+
+    if (!Object.keys(errorsValid).length) {
+      callback(values);
+    } else {
+      setErrors(errorsValid);
+      Object.keys(values).forEach((input) => {
+        if (input.includes("password")) {
+          setValues((value) => ({
+            ...value,
+            [input]: "",
+          }));
+        }
+      });
+    }
   };
 
   const resetErrors = () => {
-    if (Object.keys(errors).length !== 0 && isSubmitting) {
-      setIsSubmitting(false);
+    if (Object.keys(errors).length !== 0) {
       setErrors({});
     }
   };

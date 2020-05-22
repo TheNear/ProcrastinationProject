@@ -41,7 +41,7 @@ const SignUp = () => {
   const history = useHistory();
   const { showError } = useModal();
 
-  const onFormSubmit = useCallback(
+  const onFormSubmit = () => {
     // (username) => {
     //   dispatch(
     //     signUp({
@@ -51,14 +51,12 @@ const SignUp = () => {
     //     })
     //   );
     // },
-    () => {
-      showError(
-        "Данная функция отключена или пока не реализована. Для входа и тестирования приложения используйте testuser@gmail.com и пароль 123456",
-        10000
-      );
-    },
-    []
-  );
+
+    showError(
+      "Данная функция отключена или пока не реализована. Для входа и тестирования приложения используйте testuser@gmail.com и пароль 123456",
+      10000
+    );
+  };
 
   const { values, errors, handleChange, handleSumbit, resetErrors } = useForm(
     onFormSubmit,

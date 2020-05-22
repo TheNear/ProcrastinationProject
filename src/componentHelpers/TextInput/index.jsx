@@ -11,13 +11,18 @@ function TextInput({ value, changeValue, className, max, min }) {
     changeCurValue(value);
   }, [value]);
 
-  const successHandler = () => {
-    changeValue(curValue);
+  const cancelHandler = () => {
+    changeCurValue(value);
     editToggle(false);
   };
 
-  const cancelHandler = () => {
-    changeCurValue(value);
+  const successHandler = () => {
+    if (curValue.length < min || curValue.length > max) {
+      cancelHandler();
+      return;
+    }
+
+    changeValue(curValue);
     editToggle(false);
   };
 

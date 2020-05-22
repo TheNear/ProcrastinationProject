@@ -17,7 +17,6 @@ export const signIn = ({ email, password }) => (
   { getFirebase }
 ) => {
   const firebase = getFirebase();
-
   firebase
     .auth()
     .signInWithEmailAndPassword(email, password)

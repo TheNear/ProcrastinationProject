@@ -3,7 +3,6 @@ const MIN_NAME_LENGTH = 3;
 const MAX_NAME_LENGTH = 15;
 const MIN_PASSWORD_LENGTH = 6;
 
-// eslint-disable-next-line import/prefer-default-export
 export const regFormValid = (values) => {
   const errors = {};
 
@@ -27,6 +26,21 @@ export const regFormValid = (values) => {
   if (values.password !== values.password_repeat) {
     errors.password = `Пароли не совпадают`;
     errors.password_repeat = `Пароли не совпадают`;
+  }
+
+  return errors;
+};
+
+export const loginFormValid = (values) => {
+  const errors = {};
+
+  if (!emailRegExp.test(values.email)) {
+    errors.email = "Не корректно введён e-mail адрес";
+  }
+
+  if (values.password.length < MIN_PASSWORD_LENGTH) {
+    errors.password = `Слишком короткий пароль`;
+    errors.password_repeat = `Слишком короткий пароль`;
   }
 
   return errors;

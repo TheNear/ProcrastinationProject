@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserGraduate } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
@@ -9,6 +9,7 @@ import Button from "../../componentHelpers/Button";
 import { initPopupEvent } from "../../redux/modalPopup/action";
 import { signIn } from "../../redux/userProfile/action";
 import useForm from "../../hooks/useForm";
+import { loginFormValid } from "../../assets/js/validation";
 
 const inputs = [
   {
@@ -22,14 +23,29 @@ const inputs = [
     text: "Password",
     class: "auth__password",
     type: "password",
-  }
+  },
 ];
 
 function SignIn() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+
+  const onFormSubmit = useCallback(
+    (username) => {
+      dispatch(
+        signIn({
+          email: username.email,
+          password: username.password,
+        })
+      );
+    },
+    [dispatch]
+  );
+
+  const { values, errors, handleChange, handleSumbit, resetErrors } = useForm(
+    onFormSubmit,
+    loginFormValid
+  );
 
   const clickLinkHandler = (evt) => {
     evt.preventDefault();
@@ -46,32 +62,25 @@ function SignIn() {
     history.push("/registration");
   };
 
-  const onFormSubmit = (evt) => {
-    evt.preventDefault();
-    dispatch(signIn({ email, password }));
-    setPassword("");
-  };
-
   return (
     <>
       <FontAwesomeIcon icon={faUserGraduate} className="auth__icon" size="7x" />
-      <form onSubmit={onFormSubmit} className="auth__form" action="post">
-        <Input
-          onChange={setEmail}
-          value={email}
-          className="auth__email"
-          type="email"
-        >
-          E-mail
-        </Input>
-        <Input
-          onChange={setPassword}
-          value={password}
-          className="auth__password"
-          type="password"
-        >
-          Password
-        </Input>
+      <form onSubmit={handleSumbit} className="auth__form" action="post">
+        {inputs.map((input) => (
+          <Input
+            key={input.text + input.class}
+            name={input.name}
+            resetValid={resetErrors}
+            errors={errors[input.name] || ""}
+            value={values[input.name] || ""}
+            onChange={handleChange}
+            className={input.class}
+            type={input.type}
+          >
+            {input.text}
+          </Input>
+        ))}
+
         <Button type="submit" className="auth__submit-btn">
           Sign In
         </Button>

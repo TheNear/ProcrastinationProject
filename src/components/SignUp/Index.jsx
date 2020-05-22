@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import Input from "../../componentHelpers/Input";
 import Button from "../../componentHelpers/Button";
 import { initPopupEvent } from "../../redux/modalPopup/action";
-import { signUp } from "../../redux/userProfile/action";
+// import { signUp } from "../../redux/userProfile/action";
 import useForm from "../../hooks/useForm";
 import { regFormValid } from "../../assets/js/validation";
 
@@ -43,12 +43,22 @@ const SignUp = () => {
   const history = useHistory();
 
   const onFormSubmit = useCallback(
-    (username) => {
+    // (username) => {
+    //   dispatch(
+    //     signUp({
+    //       email: username.email,
+    //       password: username.password,
+    //       username: username.username,
+    //     })
+    //   );
+    // },
+    () => {
       dispatch(
-        signUp({
-          email: username.email,
-          password: username.password,
-          username: username.username,
+        initPopupEvent({
+          message:
+            "Данная функция отключена или пока не реализована. Для входа и тестирования приложения используйте test@gmail.com и пароль 123456",
+          type: "error",
+          duration: 10000,
         })
       );
     },
@@ -63,10 +73,10 @@ const SignUp = () => {
   const clickLinkHandler = (evt) => {
     evt.preventDefault();
     dispatch(
-      initPopupEvent(
-        "Данная функция еще не реализована, мы работаем над ней. :(",
-        "error"
-      )
+      initPopupEvent({
+        message: "Данная функция отключена или пока не реализована.",
+        type: "error",
+      })
     );
   };
 

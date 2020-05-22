@@ -19,6 +19,7 @@ const useForm = (callback, validate) => {
         }));
       }
     });
+    // Отлючено из-за требования values хуком, который постоянно меняется.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [errors, isSubmitting, callback]);
 
@@ -30,8 +31,10 @@ const useForm = (callback, validate) => {
   };
 
   const resetErrors = () => {
-    setIsSubmitting(false);
-    setErrors({});
+    if (Object.keys(errors).length !== 0 && isSubmitting) {
+      setIsSubmitting(false);
+      setErrors({});
+    }
   };
 
   const handleChange = (evt) => {

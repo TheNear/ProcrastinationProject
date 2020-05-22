@@ -1,7 +1,8 @@
 const CONST = {
   ESC_CODE: 27,
   ENTER_CODE: 13,
-  POPUP_LIFETIME: 3500,
+  MODAL_ANIM_REMOVE: 500,
+  BASE_SHOW_MODAL_TIME: 3500,
 };
 
 export default CONST;

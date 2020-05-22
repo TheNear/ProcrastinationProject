@@ -25,8 +25,8 @@ const ModalPopup = ({ show, setShow, children, type, id, duration }) => {
       setShow(false);
       setTimeout(() => {
         dispatch(deleteEvent(id));
-      }, duration);
-    }, CONST.POPUP_LIFETIME);
+      }, CONST.MODAL_ANIM_REMOVE);
+    }, duration);
     return () => {
       clearTimeout(removeClass);
     };

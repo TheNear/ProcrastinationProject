@@ -50,10 +50,10 @@ function SignIn() {
   const clickLinkHandler = (evt) => {
     evt.preventDefault();
     dispatch(
-      initPopupEvent(
-        "Данная функция еще не реализована, мы работаем над ней. :(",
-        "error"
-      )
+      initPopupEvent({
+        message: "Данная функция отключена или пока не реализована.",
+        type: "error",
+      })
     );
   };
 

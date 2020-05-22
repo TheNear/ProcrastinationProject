@@ -12,7 +12,7 @@ const ModalPopupGroup = () => {
           key={item.id}
           id={item.id}
           show
-          duration={500}
+          duration={item.duration}
           type={item.type}
         >
           {item.message}
